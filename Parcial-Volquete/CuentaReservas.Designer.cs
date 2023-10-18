@@ -30,6 +30,7 @@
         {
             dtgAlquileres = new DataGridView();
             lblNombreCuenta = new Label();
+            lblAlquileres = new Label();
             ((System.ComponentModel.ISupportInitialize)dtgAlquileres).BeginInit();
             SuspendLayout();
             // 
@@ -41,6 +42,7 @@
             dtgAlquileres.RowTemplate.Height = 25;
             dtgAlquileres.Size = new Size(795, 371);
             dtgAlquileres.TabIndex = 0;
+            
             // 
             // lblNombreCuenta
             // 
@@ -55,6 +57,19 @@
             lblNombreCuenta.TabIndex = 1;
             lblNombreCuenta.Text = "Nombre";
             // 
+            // lblAlquileres
+            // 
+            lblAlquileres.AutoSize = true;
+            lblAlquileres.BackColor = SystemColors.ActiveCaptionText;
+            lblAlquileres.FlatStyle = FlatStyle.Flat;
+            lblAlquileres.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAlquileres.ForeColor = SystemColors.ControlLightLight;
+            lblAlquileres.Location = new Point(149, 9);
+            lblAlquileres.Name = "lblAlquileres";
+            lblAlquileres.Size = new Size(180, 29);
+            lblAlquileres.TabIndex = 2;
+            lblAlquileres.Text = "Tus alquileres:";
+            // 
             // Cuenta_Reservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -62,6 +77,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(796, 396);
+            Controls.Add(lblAlquileres);
             Controls.Add(lblNombreCuenta);
             Controls.Add(dtgAlquileres);
             Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -79,5 +95,6 @@
 
         private DataGridView dtgAlquileres;
         private Label lblNombreCuenta;
+        private Label lblAlquileres;
     }
 }
