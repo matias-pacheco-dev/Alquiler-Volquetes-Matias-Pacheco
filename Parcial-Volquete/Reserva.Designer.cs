@@ -45,7 +45,7 @@
             lblPago = new Label();
             comboBoxPago = new ComboBox();
             btnConfirmar = new Button();
-            txtName = new TextBox();
+            txtNombre = new TextBox();
             txtEmail = new TextBox();
             txtTelefono = new TextBox();
             txtDireccion = new TextBox();
@@ -243,16 +243,16 @@
             btnConfirmar.UseVisualStyleBackColor = true;
             btnConfirmar.Click += btnConfirmar_Click;
             // 
-            // txtName
+            // txtNombre
             // 
-            txtName.BackColor = Color.DimGray;
-            txtName.BorderStyle = BorderStyle.None;
-            txtName.Font = new Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            txtName.ForeColor = Color.White;
-            txtName.Location = new Point(128, 110);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(200, 22);
-            txtName.TabIndex = 16;
+            txtNombre.BackColor = Color.DimGray;
+            txtNombre.BorderStyle = BorderStyle.None;
+            txtNombre.Font = new Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtNombre.ForeColor = Color.White;
+            txtNombre.Location = new Point(128, 110);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(200, 22);
+            txtNombre.TabIndex = 16;
             // 
             // txtEmail
             // 
@@ -297,7 +297,7 @@
             Controls.Add(txtDireccion);
             Controls.Add(txtTelefono);
             Controls.Add(txtEmail);
-            Controls.Add(txtName);
+            Controls.Add(txtNombre);
             Controls.Add(btnConfirmar);
             Controls.Add(comboBoxPago);
             Controls.Add(lblPago);
@@ -343,7 +343,7 @@
         private Label lblPago;
         private ComboBox comboBoxPago;
         private Button btnConfirmar;
-        private TextBox txtName;
+        private TextBox txtNombre;
         private TextBox txtEmail;
         private TextBox txtTelefono;
         private TextBox txtDireccion;

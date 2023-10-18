@@ -32,7 +32,7 @@ namespace Parcial_Volquete
 
         private void Reserva_Load(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -139,8 +139,8 @@ namespace Parcial_Volquete
             }
 
 
-            Alquiler alquilerActual = new Alquiler(this.volqueteElegido, fechaSeleccionada, lblDireccion.Text, lblNombre.Text, lblEmail.Text, 
-                lblTelefono.Text, plazo, precio, comboBoxPago.Text);
+            Alquiler alquilerActual = new Alquiler(this.volqueteElegido, fechaSeleccionada, txtDireccion.Text, txtNombre.Text, txtEmail.Text,
+                txtTelefono.Text, plazo, precio, comboBoxPago.Text);
 
             GestionUsuarios.UsuarioActual.AgregarAlquiler(alquilerActual);
 
