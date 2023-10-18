@@ -37,6 +37,7 @@
             txtPassword = new TextBox();
             btnAcceder = new Button();
             linkPassword = new LinkLabel();
+            btnExit = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -137,12 +138,25 @@
             linkPassword.TabStop = true;
             linkPassword.Text = "¿Ha olvidado su contraseña?";
             // 
+            // btnExit
+            // 
+            btnExit.BackgroundImage = (Image)resources.GetObject("btnExit.BackgroundImage");
+            btnExit.BackgroundImageLayout = ImageLayout.Stretch;
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.Location = new Point(318, 125);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(25, 24);
+            btnExit.TabIndex = 6;
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(355, 438);
+            Controls.Add(btnExit);
             Controls.Add(linkPassword);
             Controls.Add(btnAcceder);
             Controls.Add(txtPassword);
@@ -172,5 +186,6 @@
         private TextBox txtPassword;
         private Button btnAcceder;
         private LinkLabel linkPassword;
+        private Button btnExit;
     }
 }

@@ -1,12 +1,16 @@
 using System.Runtime.InteropServices;
+using Entidades;
 
 namespace Parcial_Volquete
 {
     public partial class Login : Form
     {
+        List<Usuario> usuarios;
         public Login()
         {
             InitializeComponent();
+            usuarios = GestionUsuarios.CargarUsuariosDesdeJSON();
+
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -32,20 +36,23 @@ namespace Parcial_Volquete
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            if (txtUser.Text == "user" && txtPassword.Text == "pass")
+            foreach (Usuario usuario in usuarios)
             {
-                VentanaEmergente ve = new VentanaEmergente("Log In", "Usuario logueado con exito");
-                ve.ShowDialog();
-                if (ve.DialogResult == DialogResult.OK)
+                if (txtUser.Text == usuario.Id && txtPassword.Text == usuario.Contraseña)
                 {
-                    Menu mp = new Menu();
-                    mp.Show();
-                    this.Hide();
+                    VentanaEmergente ve = new VentanaEmergente("Log In", "Usuario logueado con exito");
+                    ve.ShowDialog();
+                    if (ve.DialogResult == DialogResult.OK)
+                    {
+                        GestionUsuarios.IniciarSesion(usuario);
+                        Menu mp = new Menu();
+                        mp.Show();
+                        this.Hide();
+                    }
                 }
-
             }
-        }
 
+        }
         private void txtUser_Enter(object sender, EventArgs e)
         {
             if (txtUser.Text == "Usuario")
@@ -89,6 +96,12 @@ namespace Parcial_Volquete
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            GestionUsuarios.GuardarUsuariosEnJSON();
+            Application.Exit();
         }
     }
 }

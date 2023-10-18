@@ -1,0 +1,16 @@
+[
+  {
+    "id": "user",
+    "contraseña": "pass",
+    "Alquileres": [],
+    "Id": "user",
+    "Contraseña": "pass"
+  },
+  {
+    "id": "Jose",
+    "contraseña": "lacasa",
+    "Alquileres": [],
+    "Id": "Jose",
+    "Contraseña": "lacasa"
+  }
+]
