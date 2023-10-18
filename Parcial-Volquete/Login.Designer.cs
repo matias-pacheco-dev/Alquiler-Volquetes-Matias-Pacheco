@@ -38,6 +38,7 @@
             btnAcceder = new Button();
             linkPassword = new LinkLabel();
             btnExit = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -150,12 +151,26 @@
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.DarkOrange;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(265, 125);
+            button1.Name = "button1";
+            button1.Size = new Size(47, 24);
+            button1.TabIndex = 7;
+            button1.Text = "User";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(355, 438);
+            Controls.Add(button1);
             Controls.Add(btnExit);
             Controls.Add(linkPassword);
             Controls.Add(btnAcceder);
@@ -187,5 +202,6 @@
         private Button btnAcceder;
         private LinkLabel linkPassword;
         private Button btnExit;
+        private Button button1;
     }
 }

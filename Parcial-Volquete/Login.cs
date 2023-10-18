@@ -103,5 +103,25 @@ namespace Parcial_Volquete
             GestionUsuarios.GuardarUsuariosEnJSON();
             Application.Exit();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Usuario usuario in usuarios)
+            {
+                if (usuario.Id == "user")
+                {
+                    VentanaEmergente ve = new VentanaEmergente("Log In", "Usuario logueado con exito");
+                    ve.ShowDialog();
+                    if (ve.DialogResult == DialogResult.OK)
+                    {
+                        GestionUsuarios.IniciarSesion(usuario);
+                        Menu mp = new Menu();
+                        mp.Show();
+                        this.Hide();
+                    }
+                }
+            }
+
+        }
     }
 }
