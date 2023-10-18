@@ -55,7 +55,7 @@ namespace Parcial_Volquete
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.comercial != null) 
+            if (this.comercial != null)
             {
                 this.comercial.Close();
             }
@@ -111,6 +111,13 @@ namespace Parcial_Volquete
         private void CuentaReservas_FormClosed(object? sender, FormClosedEventArgs e)
         {
             this.CuentaReservas = null;
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login login = new Login();
+            login.Show();
         }
     }
 }

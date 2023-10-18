@@ -134,7 +134,7 @@
             // reservasToolStripMenuItem
             // 
             reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
-            reservasToolStripMenuItem.Size = new Size(180, 22);
+            reservasToolStripMenuItem.Size = new Size(142, 22);
             reservasToolStripMenuItem.Text = "Reservas";
             reservasToolStripMenuItem.Click += reservasToolStripMenuItem_Click;
             // 
@@ -143,6 +143,7 @@
             logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             logOutToolStripMenuItem.Size = new Size(75, 22);
             logOutToolStripMenuItem.Text = "Log Out";
+            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
