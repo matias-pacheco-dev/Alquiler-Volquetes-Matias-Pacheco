@@ -20,9 +20,13 @@ namespace Parcial_Volquete
 
         private void Cuenta_Reservas_Load(object sender, EventArgs e)
         {
-            lblNombreCuenta.Text = GestionUsuarios.UsuarioActual.id;
+            if(GestionUsuarios.UsuarioActual != null)
+            {
+                lblNombreCuenta.Text = GestionUsuarios.UsuarioActual.id;
 
-            dtgAlquileres.DataSource = GestionUsuarios.UsuarioActual.alquileres;
+                dtgAlquileres.DataSource = GestionUsuarios.UsuarioActual.alquileres;
+            }
+            
 
 
         }
