@@ -8,34 +8,50 @@ using System.Xml;
 
 namespace Entidades
 {
-    
+
     public static class GestionUsuarios
     {
-        public static List<Usuario> Usuarios = new List<Usuario>();
-        public static Usuario UsuarioActual { get; set; }
+        public static List<UsuarioFinal> Usuarios = new List<UsuarioFinal>();
+        public static UsuarioFinal UsuarioActual { get; set; }
+
+        public static List<Administrador> Admins = new List<Administrador>();
+        public static Administrador AdminActual { get; set; }
 
 
-        public static void CrearUsuario(Usuario usuario)
+
+        public static void CrearUsuario(UsuarioFinal nuevoUsuario)
         {
-            Usuarios.Add(usuario);
+            Usuarios.Add(nuevoUsuario);
         }
 
-        public static void IniciarSesion(Usuario usuario)
+        public static void IniciarSesion(UsuarioFinal usuario)
         {
             UsuarioActual = usuario;
         }
+
+        public static void CerrarSesion()
+        {
+            Usuarios.Clear();
+            Admins.Clear();
+
+            UsuarioActual = null;
+            AdminActual = null;
+        }
+
+
+
 
         public static void CargarUsuariosDesdeJSON()
         {
             string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "usuarios.json");
             Usuarios = Serializadora.LeerJson(rutaArchivo);
-            
+
         }
         public static void GuardarUsuariosEnJSON()
         {
-            foreach(Usuario usuario in Usuarios)
+            foreach (UsuarioFinal usuario in Usuarios)
             {
-                if (usuario.Id == UsuarioActual.Id)
+                if (usuario.id == UsuarioActual.id)
                 {
                     usuario.alquileres = UsuarioActual.alquileres;
                 }
@@ -43,8 +59,19 @@ namespace Entidades
             string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "usuarios.json");
             Serializadora.EscribirJson(rutaArchivo, Usuarios);
         }
-       
+
+        public static void CargarAdminDesdeJSON()
+        {
+            string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "admins.json");
+            Admins = Serializadora.LeerJsonAdmin(rutaArchivo);
+
+        }
+        public static void IniciarSesionAdmin(Administrador Admin)
+        {
+            AdminActual = Admin;
+        }
 
 
     }
+
 }

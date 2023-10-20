@@ -39,6 +39,8 @@
             // 
             dataGridViewCellStyle1.BackColor = Color.DarkOrange;
             dtgAlquileres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dtgAlquileres.BackgroundColor = Color.Gray;
+            dtgAlquileres.BorderStyle = BorderStyle.None;
             dtgAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgAlquileres.Location = new Point(0, 53);
             dtgAlquileres.Name = "dtgAlquileres";

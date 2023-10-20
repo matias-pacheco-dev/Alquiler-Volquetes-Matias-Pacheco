@@ -24,7 +24,15 @@ namespace Parcial_Volquete
 
         private void Menu_Load(object sender, EventArgs e)
         {
-
+            if (GestionUsuarios.UsuarioActual != null)
+            {
+                administradorPanelToolStripMenuItem.Visible = false;
+            }
+            else
+            {
+                administradorPanelToolStripMenuItem.Visible = true;
+            }
+            
         }
 
         private void comercialToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,8 +124,14 @@ namespace Parcial_Volquete
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+            GestionUsuarios.CerrarSesion();
             Login login = new Login();
             login.Show();
+        }
+
+        private void listaDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

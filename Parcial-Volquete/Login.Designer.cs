@@ -38,7 +38,8 @@
             btnAcceder = new Button();
             linkPassword = new LinkLabel();
             btnExit = new Button();
-            button1 = new Button();
+            btnUserAutomatico = new Button();
+            btnAdmin = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -151,18 +152,31 @@
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
-            // button1
+            // btnUserAutomatico
             // 
-            button1.BackColor = Color.DarkOrange;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(265, 125);
-            button1.Name = "button1";
-            button1.Size = new Size(47, 24);
-            button1.TabIndex = 7;
-            button1.Text = "User";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnUserAutomatico.BackColor = Color.DarkOrange;
+            btnUserAutomatico.FlatStyle = FlatStyle.Flat;
+            btnUserAutomatico.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUserAutomatico.Location = new Point(65, 125);
+            btnUserAutomatico.Name = "btnUserAutomatico";
+            btnUserAutomatico.Size = new Size(47, 24);
+            btnUserAutomatico.TabIndex = 7;
+            btnUserAutomatico.Text = "User";
+            btnUserAutomatico.UseVisualStyleBackColor = false;
+            btnUserAutomatico.Click += btnUserAutomatico_Click;
+            // 
+            // btnAdmin
+            // 
+            btnAdmin.BackColor = Color.DarkOrange;
+            btnAdmin.FlatStyle = FlatStyle.Flat;
+            btnAdmin.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdmin.Location = new Point(0, 125);
+            btnAdmin.Name = "btnAdmin";
+            btnAdmin.Size = new Size(59, 24);
+            btnAdmin.TabIndex = 8;
+            btnAdmin.Text = "Admin";
+            btnAdmin.UseVisualStyleBackColor = false;
+            btnAdmin.Click += btnAdmin_Click;
             // 
             // Login
             // 
@@ -170,7 +184,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(355, 438);
-            Controls.Add(button1);
+            Controls.Add(btnAdmin);
+            Controls.Add(btnUserAutomatico);
             Controls.Add(btnExit);
             Controls.Add(linkPassword);
             Controls.Add(btnAcceder);
@@ -202,6 +217,7 @@
         private Button btnAcceder;
         private LinkLabel linkPassword;
         private Button btnExit;
-        private Button button1;
+        private Button btnUserAutomatico;
+        private Button btnAdmin;
     }
 }

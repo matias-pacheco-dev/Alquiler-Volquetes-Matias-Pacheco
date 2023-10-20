@@ -43,6 +43,8 @@
             cuentaToolStripMenuItem = new ToolStripMenuItem();
             reservasToolStripMenuItem = new ToolStripMenuItem();
             logOutToolStripMenuItem = new ToolStripMenuItem();
+            administradorPanelToolStripMenuItem = new ToolStripMenuItem();
+            listaDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -52,7 +54,7 @@
             // 
             menuStrip.BackColor = Color.MediumSlateBlue;
             menuStrip.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip.Items.AddRange(new ToolStripItem[] { inicioToolStripMenuItem, comercialToolStripMenuItem, coberturaToolStripMenuItem, contáctanosToolStripMenuItem, cuentaToolStripMenuItem, logOutToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { inicioToolStripMenuItem, comercialToolStripMenuItem, coberturaToolStripMenuItem, contáctanosToolStripMenuItem, cuentaToolStripMenuItem, logOutToolStripMenuItem, administradorPanelToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Size = new Size(800, 26);
@@ -145,6 +147,20 @@
             logOutToolStripMenuItem.Text = "Log Out";
             logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
             // 
+            // administradorPanelToolStripMenuItem
+            // 
+            administradorPanelToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listaDeUsuariosToolStripMenuItem });
+            administradorPanelToolStripMenuItem.Name = "administradorPanelToolStripMenuItem";
+            administradorPanelToolStripMenuItem.Size = new Size(118, 22);
+            administradorPanelToolStripMenuItem.Text = "Administrador";
+            // 
+            // listaDeUsuariosToolStripMenuItem
+            // 
+            listaDeUsuariosToolStripMenuItem.Name = "listaDeUsuariosToolStripMenuItem";
+            listaDeUsuariosToolStripMenuItem.Size = new Size(201, 22);
+            listaDeUsuariosToolStripMenuItem.Text = "Lista De Usuarios";
+            listaDeUsuariosToolStripMenuItem.Click += listaDeUsuariosToolStripMenuItem_Click;
+            // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
@@ -198,5 +214,7 @@
         private ToolStripMenuItem santaFeToolStripMenuItem;
         private ToolStripMenuItem corrientesToolStripMenuItem;
         private ToolStripMenuItem entreRíosToolStripMenuItem;
+        private ToolStripMenuItem administradorPanelToolStripMenuItem;
+        private ToolStripMenuItem listaDeUsuariosToolStripMenuItem;
     }
 }

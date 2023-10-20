@@ -6,45 +6,24 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    [Serializable]
-    public class Usuario
+    public enum rol
     {
-        public string id;
-        private string contraseña;
-        public List<Alquiler> alquileres;
+        Administrador,
+        UsuarioFinal
+    }
+    public abstract class Usuario
+    {
+        public string id { get; set; }
+        public string contraseña { get; set; }
 
         public Usuario(string id, string contraseña)
         {
             this.id = id;
             this.contraseña = contraseña;
-            this.alquileres = new List<Alquiler>();
-
         }
-        
-
-        public void AgregarAlquiler(Alquiler alquiler)
-        {
-            alquileres.Add(alquiler);
-        }
-
-        public override string ToString()
-        {
-            return $"{this.id} -- {this.contraseña} -- {this.alquileres}";
-        }
-
-        #region Getters/Setters
-        public string Id 
-        { 
-            get => id; set => id = value; 
-        }
-        public string Contraseña 
-        { 
-            get => contraseña; set => contraseña = value; 
-        }
-        #endregion 
-         
 
 
 
     }
 }
+ 

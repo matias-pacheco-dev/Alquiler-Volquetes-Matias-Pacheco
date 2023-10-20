@@ -1,12 +1,12 @@
 [
   {
+    "alquileres": [],
     "id": "user",
-    "contraseña": "pass",
-    "alquileres": []
+    "contraseña": "pass"
   },
   {
-    "id": "Jose",
-    "contraseña": "lacasa",
-    "alquileres": []
+    "alquileres": [],
+    "id": "jose",
+    "contraseña": "papapa"
   }
 ]

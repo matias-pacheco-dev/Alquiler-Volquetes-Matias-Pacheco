@@ -5,19 +5,20 @@ namespace Parcial_Volquete
 {
     public partial class Login : Form
     {
-        
+
         public Login()
         {
             InitializeComponent();
             try
             {
                 GestionUsuarios.CargarUsuariosDesdeJSON();
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 GestionUsuarios.GuardarUsuariosEnJSON();
             }
-                
+
 
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -44,9 +45,9 @@ namespace Parcial_Volquete
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            foreach (Usuario usuario in GestionUsuarios.Usuarios)
+            foreach (UsuarioFinal usuario in GestionUsuarios.Usuarios)
             {
-                if (txtUser.Text == usuario.Id && txtPassword.Text == usuario.Contraseña)
+                if (txtUser.Text == usuario.id && txtPassword.Text == usuario.contraseña)
                 {
                     VentanaEmergente ve = new VentanaEmergente("Log In", "Usuario logueado con exito");
                     ve.ShowDialog();
@@ -59,6 +60,10 @@ namespace Parcial_Volquete
                     }
                 }
             }
+
+
+
+
 
         }
         private void txtUser_Enter(object sender, EventArgs e)
@@ -112,13 +117,23 @@ namespace Parcial_Volquete
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnUserAutomatico_Click(object sender, EventArgs e)
         {
-            
-             txtUser.Text = "user";
-             txtPassword.Text = "pass";
-            
+            txtUser.Text = "user";
+            txtPassword.Text = "pass";
 
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            GestionUsuarios.CargarAdminDesdeJSON();
+            foreach(Administrador admin in GestionUsuarios.Admins) 
+            {
+                GestionUsuarios.IniciarSesionAdmin(admin);
+                Menu mp = new Menu();
+                mp.Show();
+                this.Hide();
+            }
         }
     }
 }
