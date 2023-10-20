@@ -28,12 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "UsersAdminView";
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersAdminView));
+            dtgListaUsuarios = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dtgListaUsuarios).BeginInit();
+            SuspendLayout();
+            // 
+            // dtgListaUsuarios
+            // 
+            dtgListaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgListaUsuarios.Location = new Point(21, 24);
+            dtgListaUsuarios.Name = "dtgListaUsuarios";
+            dtgListaUsuarios.RowTemplate.Height = 25;
+            dtgListaUsuarios.Size = new Size(752, 344);
+            dtgListaUsuarios.TabIndex = 0;
+            // 
+            // UsersAdminView
+            // 
+            AutoScaleDimensions = new SizeF(8F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(796, 396);
+            Controls.Add(dtgListaUsuarios);
+            Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "UsersAdminView";
+            Text = "UsersAdminView";
+            FormClosed += UsersAdminView_FormClosed;
+            Load += UsersAdminView_Load;
+            ((System.ComponentModel.ISupportInitialize)dtgListaUsuarios).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dtgListaUsuarios;
     }
 }

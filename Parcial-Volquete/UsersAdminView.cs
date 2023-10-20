@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,18 @@ namespace Parcial_Volquete
         public UsersAdminView()
         {
             InitializeComponent();
+        }
+
+
+
+        private void UsersAdminView_Load(object sender, EventArgs e)
+        {
+            dtgListaUsuarios.DataSource = GestionUsuarios.Usuarios;
+        }
+
+        private void UsersAdminView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

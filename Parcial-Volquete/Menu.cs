@@ -16,6 +16,7 @@ namespace Parcial_Volquete
         Form comercial;
         Form Contactanos;
         Form CuentaReservas;
+        Form VistaAdmin;
         public Menu()
         {
             InitializeComponent();
@@ -75,7 +76,10 @@ namespace Parcial_Volquete
             {
                 this.CuentaReservas.Close();
             }
-
+            else if (this.VistaAdmin != null)
+            {
+                this.VistaAdmin.Close();
+            }
 
             this.pictureBox1.Visible = true;
         }
@@ -131,7 +135,20 @@ namespace Parcial_Volquete
 
         private void listaDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(VistaAdmin == null)
+            {
+                this.VistaAdmin = new UsersAdminView();
+                this.VistaAdmin.MdiParent = this;
+                this.VistaAdmin.FormClosed += UsersAdminView_FormClosed;
+                this.VistaAdmin.StartPosition = FormStartPosition.CenterScreen;
+                this.pictureBox1.Visible = false;
+                this.VistaAdmin.Show();
+            }
+        }
 
+        private void UsersAdminView_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            this.VistaAdmin = null;
         }
     }
 }
