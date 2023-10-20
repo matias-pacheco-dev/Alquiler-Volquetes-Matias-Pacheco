@@ -32,7 +32,7 @@ namespace Parcial_Volquete
 
         private void Reserva_Load(object sender, EventArgs e)
         {
-
+            comboBoxPago.DataSource = Enum.GetValues(typeof(MedioDePago));
 
         }
 
@@ -46,17 +46,18 @@ namespace Parcial_Volquete
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             DateTime fechaSeleccionada = dateTimePicker1.Value;
+            MedioDePago medioPago = (MedioDePago)comboBoxPago.SelectedValue;
             string plazo = comboBoxPlazo.Text;
             decimal precio = 0m;
 
             switch (plazo)
             {
                 case "24hs":
-                    if (this.volqueteElegido.Tamaño.Equals("Pequeño"))
+                    if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
                     {
                         precio = 96.00m;
                     }
-                    else if (this.volqueteElegido.Tamaño.Equals("Mediano"))
+                    else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
                     {
                         precio = 300.00m;
                     }
@@ -67,11 +68,11 @@ namespace Parcial_Volquete
 
                     break;
                 case "48hs":
-                    if (this.volqueteElegido.Tamaño.Equals("Pequeño"))
+                    if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
                     {
                         precio = 192.00m;
                     }
-                    else if (this.volqueteElegido.Tamaño.Equals("Mediano"))
+                    else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
                     {
                         precio = 600.00m;
                     }
@@ -81,11 +82,11 @@ namespace Parcial_Volquete
                     }
                     break;
                 case "72hs":
-                    if (this.volqueteElegido.Tamaño.Equals("Pequeño"))
+                    if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
                     {
                         precio = 288.00m;
                     }
-                    else if (this.volqueteElegido.Tamaño.Equals("Mediano"))
+                    else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
                     {
                         precio = 900.00m;
                     }
@@ -95,11 +96,11 @@ namespace Parcial_Volquete
                     }
                     break;
                 case "1 semana":
-                    if (this.volqueteElegido.Tamaño.Equals("Pequeño"))
+                    if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
                     {
                         precio = 672.00m;
                     }
-                    else if (this.volqueteElegido.Tamaño.Equals("Mediano"))
+                    else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
                     {
                         precio = 2100.00m;
                     }
@@ -109,11 +110,11 @@ namespace Parcial_Volquete
                     }
                     break;
                 case "2 semanas":
-                    if (this.volqueteElegido.Tamaño.Equals("Pequeño"))
+                    if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
                     {
                         precio = 1344.00m;
                     }
-                    else if (this.volqueteElegido.Tamaño.Equals("Mediano"))
+                    else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
                     {
                         precio = 4200.00m;
                     }
@@ -123,11 +124,11 @@ namespace Parcial_Volquete
                     }
                     break;
                 case "1 mes":
-                    if (this.volqueteElegido.Tamaño.Equals("Pequeño"))
+                    if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
                     {
                         precio = 2880.00m;
                     }
-                    else if (this.volqueteElegido.Tamaño.Equals("Mediano"))
+                    else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
                     {
                         precio = 9000.00m;
                     }
@@ -140,7 +141,7 @@ namespace Parcial_Volquete
 
 
             Alquiler alquilerActual = new Alquiler(this.volqueteElegido, fechaSeleccionada, txtDireccion.Text, txtNombre.Text, txtEmail.Text,
-                txtTelefono.Text, plazo, precio, comboBoxPago.Text);
+                txtTelefono.Text, plazo, precio, medioPago);
 
             GestionUsuarios.UsuarioActual.AgregarAlquiler(alquilerActual);
 

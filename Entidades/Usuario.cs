@@ -10,16 +10,17 @@ namespace Entidades
     public class Usuario
     {
         public string id;
-        public string contraseña;
+        private string contraseña;
         public List<Alquiler> alquileres;
 
         public Usuario(string id, string contraseña)
         {
-            this.Id = id;
-            this.Contraseña = contraseña;
+            this.id = id;
+            this.contraseña = contraseña;
             this.alquileres = new List<Alquiler>();
 
         }
+        
 
         public void AgregarAlquiler(Alquiler alquiler)
         {

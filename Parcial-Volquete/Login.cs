@@ -5,11 +5,19 @@ namespace Parcial_Volquete
 {
     public partial class Login : Form
     {
-        List<Usuario> usuarios;
+        
         public Login()
         {
             InitializeComponent();
-            usuarios = GestionUsuarios.CargarUsuariosDesdeJSON();
+            try
+            {
+                GestionUsuarios.CargarUsuariosDesdeJSON();
+            }
+            catch(Exception ex)
+            {
+                GestionUsuarios.GuardarUsuariosEnJSON();
+            }
+                
 
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -36,7 +44,7 @@ namespace Parcial_Volquete
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            foreach (Usuario usuario in usuarios)
+            foreach (Usuario usuario in GestionUsuarios.Usuarios)
             {
                 if (txtUser.Text == usuario.Id && txtPassword.Text == usuario.Contraseña)
                 {
@@ -106,21 +114,10 @@ namespace Parcial_Volquete
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (Usuario usuario in usuarios)
-            {
-                if (usuario.Id == "user")
-                {
-                    VentanaEmergente ve = new VentanaEmergente("Log In", "Usuario logueado con exito");
-                    ve.ShowDialog();
-                    if (ve.DialogResult == DialogResult.OK)
-                    {
-                        GestionUsuarios.IniciarSesion(usuario);
-                        Menu mp = new Menu();
-                        mp.Show();
-                        this.Hide();
-                    }
-                }
-            }
+            
+             txtUser.Text = "user";
+             txtPassword.Text = "pass";
+            
 
         }
     }

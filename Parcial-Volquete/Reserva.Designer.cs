@@ -172,6 +172,7 @@
             dateTimePicker1.CalendarTitleForeColor = Color.Black;
             dateTimePicker1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dateTimePicker1.Location = new Point(128, 315);
+            dateTimePicker1.MinDate = new DateTime(2023, 10, 19, 0, 0, 0, 0);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(208, 21);
             dateTimePicker1.TabIndex = 10;
@@ -222,7 +223,6 @@
             comboBoxPago.FlatStyle = FlatStyle.Flat;
             comboBoxPago.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxPago.FormattingEnabled = true;
-            comboBoxPago.Items.AddRange(new object[] { "Efectivo", "Tarjeta de crédito o débito", "MercadoPago" });
             comboBoxPago.Location = new Point(184, 426);
             comboBoxPago.Name = "comboBoxPago";
             comboBoxPago.Size = new Size(163, 26);

@@ -27,6 +27,9 @@ namespace Parcial_Volquete
 
         }
 
-        
+        private void dtgAlquileres_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

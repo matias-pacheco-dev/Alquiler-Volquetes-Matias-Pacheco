@@ -25,14 +25,21 @@ namespace Entidades
             UsuarioActual = usuario;
         }
 
-        public static List<Usuario> CargarUsuariosDesdeJSON()
+        public static void CargarUsuariosDesdeJSON()
         {
             string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "usuarios.json");
             Usuarios = Serializadora.LeerJson(rutaArchivo);
-            return Usuarios;
+            
         }
         public static void GuardarUsuariosEnJSON()
         {
+            foreach(Usuario usuario in Usuarios)
+            {
+                if (usuario.Id == UsuarioActual.Id)
+                {
+                    usuario.alquileres = UsuarioActual.alquileres;
+                }
+            }
             string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "usuarios.json");
             Serializadora.EscribirJson(rutaArchivo, Usuarios);
         }
