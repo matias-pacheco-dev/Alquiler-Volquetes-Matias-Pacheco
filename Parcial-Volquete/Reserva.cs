@@ -9,16 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Numerics;
+using AccesoDatos;
 
 namespace Parcial_Volquete
 {
     public partial class Reserva : Form
     {
-        Volquete volqueteElegido;
-        public Reserva(Volquete volqueteElegido)
+        List<Volquete> volquetesElegidos;
+        List<Volquete> volquetesOriginales;
+        public Reserva(List<Volquete> volqueteElegido)
         {
             InitializeComponent();
-            this.volqueteElegido = volqueteElegido;
+            volquetesElegidos = volqueteElegido;
+
         }
 
 
@@ -33,6 +37,8 @@ namespace Parcial_Volquete
         private void Reserva_Load(object sender, EventArgs e)
         {
             comboBoxPago.DataSource = Enum.GetValues(typeof(MedioDePago));
+            VolqueteDao volqueteDao = new VolqueteDao();
+            volquetesOriginales = volqueteDao.ObtenerVolquetes();
 
         }
 
@@ -52,100 +58,15 @@ namespace Parcial_Volquete
                 string plazo = comboBoxPlazo.Text;
                 decimal precio = 0m;
 
-                switch (plazo)
-                {
-                    case "24hs":
-                        if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
-                        {
-                            precio = 96.00m;
-                        }
-                        else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
-                        {
-                            precio = 300.00m;
-                        }
-                        else
-                        {
-                            precio = 500.00m;
-                        }
-
-                        break;
-                    case "48hs":
-                        if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
-                        {
-                            precio = 192.00m;
-                        }
-                        else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
-                        {
-                            precio = 600.00m;
-                        }
-                        else
-                        {
-                            precio = 1000.00m;
-                        }
-                        break;
-                    case "72hs":
-                        if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
-                        {
-                            precio = 288.00m;
-                        }
-                        else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
-                        {
-                            precio = 900.00m;
-                        }
-                        else
-                        {
-                            precio = 1500.00m;
-                        }
-                        break;
-                    case "1 semana":
-                        if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
-                        {
-                            precio = 672.00m;
-                        }
-                        else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
-                        {
-                            precio = 2100.00m;
-                        }
-                        else
-                        {
-                            precio = 3500.00m;
-                        }
-                        break;
-                    case "2 semanas":
-                        if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
-                        {
-                            precio = 1344.00m;
-                        }
-                        else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
-                        {
-                            precio = 4200.00m;
-                        }
-                        else
-                        {
-                            precio = 7000.00m;
-                        }
-                        break;
-                    case "1 mes":
-                        if (this.volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
-                        {
-                            precio = 2880.00m;
-                        }
-                        else if (this.volqueteElegido.Tipo == TipoDeVolquete.Mediano)
-                        {
-                            precio = 9000.00m;
-                        }
-                        else
-                        {
-                            precio = 15000.00m;
-                        }
-                        break;
-                }
+                precio = calcularPrecio(plazo, precio);
 
 
-                Alquiler alquilerActual = new Alquiler(this.volqueteElegido, fechaSeleccionada, txtDireccion.Text, txtNombre.Text, txtEmail.Text,
+                Alquiler alquilerActual = new Alquiler(volquetesElegidos, fechaSeleccionada, txtDireccion.Text, txtNombre.Text, txtEmail.Text,
                     txtTelefono.Text, plazo, precio, medioPago);
 
                 GestionUsuarios.UsuarioActual.AgregarAlquiler(alquilerActual);
+
+                reducirStock();
 
                 VentanaEmergente ve = new VentanaEmergente("Reserva", "Reservado con éxito");
                 ve.ShowDialog();
@@ -154,10 +75,134 @@ namespace Parcial_Volquete
                     this.Close();
                 }
             }
-           
+
 
 
 
         }
-    }
+
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private decimal calcularPrecio(string plazo, decimal precio)
+        {
+            foreach (Volquete volqueteElegido in volquetesElegidos) {
+                switch (plazo)
+                {
+                    case "24hs":
+                        if (volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
+                        {
+                            precio += 96.00m;
+                        }
+                        else if (volqueteElegido.Tipo == TipoDeVolquete.Mediano)
+                        {
+                            precio += 300.00m;
+                        }
+                        else
+                        {
+                            precio += 500.00m;
+                        }
+
+                        break;
+                    case "48hs":
+                        if (volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
+                        {
+                            precio += 192.00m;
+                        }
+                        else if (volqueteElegido.Tipo == TipoDeVolquete.Mediano)
+                        {
+                            precio += 600.00m;
+                        }
+                        else
+                        {
+                            precio += 1000.00m;
+                        }
+                        break;
+                    case "72hs":
+                        if (volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
+                        {
+                            precio += 288.00m;
+                        }
+                        else if (volqueteElegido.Tipo == TipoDeVolquete.Mediano)
+                        {
+                            precio += 900.00m;
+                        }
+                        else
+                        {
+                            precio += 1500.00m;
+                        }
+                        break;
+                    case "1 semana":
+                        if (volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
+                        {
+                            precio += 672.00m;
+                        }
+                        else if (volqueteElegido.Tipo == TipoDeVolquete.Mediano)
+                        {
+                            precio += 2100.00m;
+                        }
+                        else
+                        {
+                            precio += 3500.00m;
+                        }
+                        break;
+                    case "2 semanas":
+                        if (volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
+                        {
+                            precio += 1344.00m;
+                        }
+                        else if (volqueteElegido.Tipo == TipoDeVolquete.Mediano)
+                        {
+                            precio += 4200.00m;
+                        }
+                        else
+                        {
+                            precio += 7000.00m;
+                        }
+                        break;
+                    case "1 mes":
+                        if (volqueteElegido.Tipo == TipoDeVolquete.Pequeño)
+                        {
+                            precio += 2880.00m;
+                        }
+                        else if (volqueteElegido.Tipo == TipoDeVolquete.Mediano)
+                        {
+                            precio += 9000.00m;
+                        }
+                        else
+                        {
+                            precio += 15000.00m;
+                        }
+                        break;
+                }
+            }
+            return precio;
+
+
+        }
+
+        private void reducirStock()
+        {
+            VolqueteDao volqueteDao = new VolqueteDao();
+
+            foreach (Volquete volqueteElegido in volquetesElegidos)
+            {
+                
+                Volquete volqueteOriginal = volquetesOriginales.Find(v => v.Tipo == volqueteElegido.Tipo);
+
+                if (volqueteOriginal != null)
+                {
+                    
+                    int nuevoStock = volqueteOriginal.Stock - 1;
+
+                    
+                    volqueteDao.ActualizarStockEnBD(volqueteElegido.Tipo, nuevoStock);
+                }
+            }
+        }
+
+    } 
 }

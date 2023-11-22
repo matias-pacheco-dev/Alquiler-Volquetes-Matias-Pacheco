@@ -1,5 +1,7 @@
 using System.Runtime.InteropServices;
+
 using Entidades;
+using AccesoDatos;
 
 namespace Parcial_Volquete
 {
@@ -9,18 +11,9 @@ namespace Parcial_Volquete
         public Login()
         {
             InitializeComponent();
-            try
-            {
-                GestionUsuarios.CargarUsuariosDesdeJSON();
-
-            }
-            catch (Exception ex)
-            {
-                GestionUsuarios.GuardarUsuariosEnJSON();
-            }
-
-
+ 
         }
+        // Importación de funciones desde user32.dll para permitir el movimiento del formulario
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -45,25 +38,39 @@ namespace Parcial_Volquete
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            foreach (UsuarioFinal usuario in GestionUsuarios.Usuarios)
+            UserDao userDao = new UserDao();
+            Usuario usuario = userDao.Login(txtUser.Text, txtPassword.Text);
+
+            if (usuario != null)
             {
-                if (txtUser.Text == usuario.id && txtPassword.Text == usuario.contraseña)
+                if (usuario is Cliente)
                 {
-                    VentanaEmergente ve = new VentanaEmergente("Log In", "Usuario logueado con exito");
+                    VentanaEmergente ve = new VentanaEmergente("Log In", "Cliente logueado con exito");
                     ve.ShowDialog();
+
                     if (ve.DialogResult == DialogResult.OK)
                     {
-                        GestionUsuarios.IniciarSesion(usuario);
+                        GestionUsuarios.IniciarSesion((Cliente)usuario);
                         Menu mp = new Menu();
                         mp.Show();
                         this.Hide();
                     }
                 }
+                else 
+                {
+                    VentanaEmergente ve = new VentanaEmergente("Log In", "Admin logueado con exito");
+                    ve.ShowDialog();
+
+                    if (ve.DialogResult == DialogResult.OK)
+                    {
+                        GestionUsuarios.IniciarSesionAdmin((Administrador)usuario);
+                        Menu mp = new Menu();
+                        mp.Show();
+                        this.Hide();
+                    }
+                }
+
             }
-
-
-
-
 
         }
         private void txtUser_Enter(object sender, EventArgs e)
@@ -105,6 +112,7 @@ namespace Parcial_Volquete
             }
         }
 
+        
         private void Login_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -113,27 +121,21 @@ namespace Parcial_Volquete
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            GestionUsuarios.GuardarUsuariosEnJSON();
+            
             Application.Exit();
         }
 
         private void btnUserAutomatico_Click(object sender, EventArgs e)
         {
-            txtUser.Text = "user";
-            txtPassword.Text = "pass";
+            txtUser.Text = "User";
+            txtPassword.Text = "Pass";
 
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            GestionUsuarios.CargarAdminDesdeJSON();
-            foreach(Administrador admin in GestionUsuarios.Admins) 
-            {
-                GestionUsuarios.IniciarSesionAdmin(admin);
-                Menu mp = new Menu();
-                mp.Show();
-                this.Hide();
-            }
+            txtUser.Text = "Admin";
+            txtPassword.Text = "Pass";
         }
     }
 }

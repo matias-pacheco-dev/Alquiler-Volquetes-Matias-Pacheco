@@ -41,6 +41,7 @@
             dtgListaUsuarios.RowTemplate.Height = 25;
             dtgListaUsuarios.Size = new Size(752, 344);
             dtgListaUsuarios.TabIndex = 0;
+            dtgListaUsuarios.CellClick += dtgListaUsuarios_CellClick;
             // 
             // UsersAdminView
             // 
@@ -54,7 +55,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "UsersAdminView";
             Text = "UsersAdminView";
-            FormClosed += UsersAdminView_FormClosed;
+            
             Load += UsersAdminView_Load;
             ((System.ComponentModel.ISupportInitialize)dtgListaUsuarios).EndInit();
             ResumeLayout(false);

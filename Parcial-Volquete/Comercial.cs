@@ -13,6 +13,7 @@ namespace Parcial_Volquete
 {
     public partial class Comercial : Form
     {
+        private List<Volquete> listaVolquetes = new List<Volquete>();
         public Comercial()
         {
             InitializeComponent();
@@ -20,24 +21,32 @@ namespace Parcial_Volquete
 
         private void btnChico_Click(object sender, EventArgs e)
         {
-            Volquete volqueteChico = new Volquete(1.75, TipoDeVolquete.Pequeño);
-            Reserva rv = new Reserva(volqueteChico);
-            rv.ShowDialog();
+            AgregarVolquete(1.75, TipoDeVolquete.Pequeño);
         }
 
         private void btnMediano_Click(object sender, EventArgs e)
         {
-            Volquete volqueteMediano = new Volquete(2.5, TipoDeVolquete.Mediano);
-            Reserva rv = new Reserva(volqueteMediano);
-            rv.ShowDialog();
+            AgregarVolquete(2.5, TipoDeVolquete.Mediano);
         }
 
         private void btnGrande_Click(object sender, EventArgs e)
         {
-            Volquete volqueteGrande = new Volquete(5.0, TipoDeVolquete.Grande);
-            Reserva rv = new Reserva(volqueteGrande);
-            rv.ShowDialog();
+            AgregarVolquete(5.0, TipoDeVolquete.Grande);
         }
-      
+
+        private void AgregarVolquete(double capacidad, TipoDeVolquete tipo)
+        {
+            Volquete nuevoVolquete = new Volquete(capacidad, tipo);
+            listaVolquetes.Add(nuevoVolquete);
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            if (listaVolquetes.Count > 0)
+            {
+                Reserva rv = new Reserva(listaVolquetes);
+                rv.ShowDialog();
+            }
+        }
     }
 }

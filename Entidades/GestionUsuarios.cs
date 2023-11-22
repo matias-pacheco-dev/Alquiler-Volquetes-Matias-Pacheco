@@ -11,22 +11,27 @@ namespace Entidades
 
     public static class GestionUsuarios
     {
-        public static List<UsuarioFinal> Usuarios = new List<UsuarioFinal>();
-        public static UsuarioFinal UsuarioActual { get; set; }
+        public static List<Cliente> Usuarios = new List<Cliente>();
+        public static Cliente UsuarioActual { get; set; }
 
         public static List<Administrador> Admins = new List<Administrador>();
         public static Administrador AdminActual { get; set; }
 
 
 
-        public static void CrearUsuario(UsuarioFinal nuevoUsuario)
+        public static void CrearUsuario(Cliente nuevoUsuario)
         {
             Usuarios.Add(nuevoUsuario);
         }
 
-        public static void IniciarSesion(UsuarioFinal usuario)
+        public static void IniciarSesion(Cliente usuario)
         {
             UsuarioActual = usuario;
+        }
+
+        public static void IniciarSesionAdmin(Administrador Admin)
+        {
+            AdminActual = Admin;
         }
 
         public static void CerrarSesion()
@@ -40,7 +45,7 @@ namespace Entidades
 
 
 
-
+        #region
         public static void CargarUsuariosDesdeJSON()
         {
             string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "usuarios.json");
@@ -49,7 +54,7 @@ namespace Entidades
         }
         public static void GuardarUsuariosEnJSON()
         {
-            foreach (UsuarioFinal usuario in Usuarios)
+            foreach (Cliente usuario in Usuarios)
             {
                 if (usuario.id == UsuarioActual.id)
                 {
@@ -66,10 +71,14 @@ namespace Entidades
             Admins = Serializadora.LeerJsonAdmin(rutaArchivo);
 
         }
-        public static void IniciarSesionAdmin(Administrador Admin)
-        {
-            AdminActual = Admin;
-        }
+        #endregion
+
+
+       
+
+        
+
+
 
 
     }

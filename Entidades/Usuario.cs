@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public enum rol
-    {
-        Administrador,
-        UsuarioFinal
-    }
+ 
     public abstract class Usuario
     {
         public string id { get; set; }

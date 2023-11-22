@@ -20,12 +20,20 @@ namespace Entidades
 
         public TipoDeVolquete Tipo { get; set; }
 
+        public int Stock { get; set; }
+
 
         public Volquete(double tamaño, TipoDeVolquete tipo)
         {
             this.Tamaño = tamaño;
             this.Tipo = tipo;
-           
+            
+        }
+        public Volquete(double tamaño, TipoDeVolquete tipo, int stock)
+        {
+            this.Tamaño = tamaño;
+            this.Tipo = tipo;
+            this.Stock = stock;
         }
         public override string ToString()
         {

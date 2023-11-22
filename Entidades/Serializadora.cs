@@ -10,7 +10,7 @@ namespace Entidades
 {
     public static class Serializadora
     {
-        public static void EscribirJson(string ruta, List<UsuarioFinal> lista)
+        public static void EscribirJson(string ruta, List<Cliente> lista)
         {
             try
             {
@@ -26,13 +26,13 @@ namespace Entidades
 
 
 
-        public static List<UsuarioFinal> LeerJson(string path)
+        public static List<Cliente> LeerJson(string path)
         {
-            List<UsuarioFinal> lista = null;
+            List<Cliente> lista = null;
             try
             {
                 string json = File.ReadAllText(path);
-                lista = JsonConvert.DeserializeObject<List<UsuarioFinal>>(json);
+                lista = JsonConvert.DeserializeObject<List<Cliente>>(json);
 
             }
             catch (Exception e)
@@ -45,7 +45,7 @@ namespace Entidades
 
 
 
-        public static void ActualizarJson(string ruta, List<UsuarioFinal> lista) 
+        public static void ActualizarJson(string ruta, List<Cliente> lista) 
         {
             try
             {

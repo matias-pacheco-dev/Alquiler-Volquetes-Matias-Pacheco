@@ -24,7 +24,7 @@ namespace Entidades
     [Serializable]
     public class Alquiler
     {
-        public Volquete VolqueteAlquiler { get; set; }
+        public List <Volquete> VolquetesAlquiler { get; set; }
 
         public DateTime FechaEscogida { get; set; }
         public MedioDePago MedioDePago { get; set; }
@@ -33,15 +33,12 @@ namespace Entidades
         public string Nombre { get; set; }
         public string Email { get; set;}
         public string numeroDeTelefono { get; set; }
-
-       
-
         public string Duracion { get; set; } 
         public decimal Precio { get; set; }
 
-        public Alquiler(Volquete volquete, DateTime dateTime, string ubicacionDeEntrega, string nombre, string email, string numeroDeTelefono, string duracion, decimal Precio, MedioDePago medioDePago)
+        public Alquiler(List<Volquete> volquetes, DateTime dateTime, string ubicacionDeEntrega, string nombre, string email, string numeroDeTelefono, string duracion, decimal Precio, MedioDePago medioDePago)
         {
-            this.VolqueteAlquiler = volquete;
+            this.VolquetesAlquiler = volquetes;
             this.FechaEscogida = dateTime;
             this.ubicacionDeEntrega = ubicacionDeEntrega;
             this.Nombre = nombre;
@@ -55,9 +52,16 @@ namespace Entidades
         }
         public override string ToString()
         {
-            return $"Alquiler de {VolqueteAlquiler} el {FechaEscogida}, ubicación de entrega: {ubicacionDeEntrega}, Nombre: {Nombre}, Email: {Email}, Teléfono: {numeroDeTelefono}, Duración: {Duracion}, Precio: {Precio:C}, Medio de Pago: {MedioDePago}";
+            return $"Alquiler de {VolquetesAlquiler} el {FechaEscogida}, ubicación de entrega: {ubicacionDeEntrega}, Nombre: {Nombre}, Email: {Email}, Teléfono: {numeroDeTelefono}, Duración: {Duracion}, Precio: {Precio:C}, Medio de Pago: {MedioDePago}";
         }
 
+        public string VolquetesToString
+        {
+            get
+            {
+                return string.Join(", ", VolquetesAlquiler.Select(v => v.ToString()));
+            }
+        }
 
     }
 }

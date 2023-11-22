@@ -39,13 +39,14 @@
             // 
             dataGridViewCellStyle1.BackColor = Color.DarkOrange;
             dtgAlquileres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dtgAlquileres.BackgroundColor = Color.Gray;
+            dtgAlquileres.BackgroundColor = Color.Thistle;
             dtgAlquileres.BorderStyle = BorderStyle.None;
             dtgAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgAlquileres.Location = new Point(0, 53);
+            dtgAlquileres.GridColor = Color.Black;
+            dtgAlquileres.Location = new Point(0, 41);
             dtgAlquileres.Name = "dtgAlquileres";
             dtgAlquileres.RowTemplate.Height = 25;
-            dtgAlquileres.Size = new Size(795, 371);
+            dtgAlquileres.Size = new Size(794, 362);
             dtgAlquileres.TabIndex = 0;
             dtgAlquileres.CellContentClick += dtgAlquileres_CellContentClick;
             // 

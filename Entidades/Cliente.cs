@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace Entidades
 {
     [Serializable]
-    public class UsuarioFinal : Usuario
+    public class Cliente : Usuario
     {
         public List<Alquiler> alquileres;
 
-        public UsuarioFinal(string id, string contraseña):base (id, contraseña) 
+        public Cliente(string id, string contraseña):base (id, contraseña) 
         {
           
             this.alquileres = new List<Alquiler>();
@@ -30,7 +30,7 @@ namespace Entidades
         }
 
         
-         
+          
 
 
 

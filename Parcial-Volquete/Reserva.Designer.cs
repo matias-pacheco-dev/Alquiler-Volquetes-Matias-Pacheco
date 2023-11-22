@@ -49,6 +49,7 @@
             txtEmail = new TextBox();
             txtTelefono = new TextBox();
             txtDireccion = new TextBox();
+            btnExit = new Button();
             SuspendLayout();
             // 
             // lblInfo
@@ -287,6 +288,18 @@
             txtDireccion.Size = new Size(200, 22);
             txtDireccion.TabIndex = 19;
             // 
+            // btnExit
+            // 
+            btnExit.BackgroundImage = (Image)resources.GetObject("btnExit.BackgroundImage");
+            btnExit.BackgroundImageLayout = ImageLayout.Stretch;
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.Location = new Point(12, 12);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(31, 29);
+            btnExit.TabIndex = 20;
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
+            // 
             // Reserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -294,6 +307,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(532, 514);
+            Controls.Add(btnExit);
             Controls.Add(txtDireccion);
             Controls.Add(txtTelefono);
             Controls.Add(txtEmail);
@@ -347,5 +361,6 @@
         private TextBox txtEmail;
         private TextBox txtTelefono;
         private TextBox txtDireccion;
+        private Button btnExit;
     }
 }

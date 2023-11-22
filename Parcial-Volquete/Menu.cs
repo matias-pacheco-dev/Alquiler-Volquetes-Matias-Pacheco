@@ -118,6 +118,10 @@ namespace Parcial_Volquete
                 this.pictureBox1.Visible = false;
                 this.CuentaReservas.Show();
             }
+            else
+            {
+                this.CuentaReservas.Activate();
+            }
         }
 
         private void CuentaReservas_FormClosed(object? sender, FormClosedEventArgs e)

@@ -23,11 +23,13 @@ namespace Parcial_Volquete
         private void UsersAdminView_Load(object sender, EventArgs e)
         {
             dtgListaUsuarios.DataSource = GestionUsuarios.Usuarios;
+
         }
 
-        private void UsersAdminView_FormClosed(object sender, FormClosedEventArgs e)
-        {
 
+        private void dtgListaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }
