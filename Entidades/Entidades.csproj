@@ -10,4 +10,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj" />
+    <ProjectReference Include="..\Dominio\Dominio.csproj" />
+  </ItemGroup>
+
 </Project>

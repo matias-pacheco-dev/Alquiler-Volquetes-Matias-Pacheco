@@ -1,11 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-
+using Dominio;
 namespace Entidades
 {
     public static class Serializadora
@@ -22,7 +16,7 @@ namespace Entidades
                 Console.WriteLine(ex.ToString());
             }
         }
-        
+
 
 
 
@@ -41,11 +35,11 @@ namespace Entidades
             }
             return lista;
         }
-        
 
 
 
-        public static void ActualizarJson(string ruta, List<Cliente> lista) 
+
+        public static void ActualizarJson(string ruta, List<Cliente> lista)
         {
             try
             {
@@ -60,7 +54,7 @@ namespace Entidades
             {
 
             }
-        
+
         }
 
         public static List<Administrador> LeerJsonAdmin(string path)

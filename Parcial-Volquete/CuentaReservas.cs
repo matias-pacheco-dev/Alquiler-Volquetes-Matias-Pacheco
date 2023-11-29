@@ -1,13 +1,5 @@
 ﻿using Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Dominio;
 
 namespace Parcial_Volquete
 {
@@ -26,6 +18,7 @@ namespace Parcial_Volquete
                 dtgAlquileres.AutoGenerateColumns = false;
 
                 // Configura las columnas según las propiedades de tu clase Alquiler
+                dtgAlquileres.Columns.Add("IdAlquiler", "Id");
                 dtgAlquileres.Columns.Add("VolquetesAlquiler", "Volquetes");
                 dtgAlquileres.Columns.Add("FechaEscogida", "Fecha");
                 dtgAlquileres.Columns.Add("ubicacionDeEntrega", "Ubicación de entrega");
@@ -37,7 +30,9 @@ namespace Parcial_Volquete
                 dtgAlquileres.Columns.Add("MedioDePago", "Medio de Pago");
                 dtgAlquileres.Columns.Add("estado", "Estado");
 
+
                 // Configura las propiedades de las columnas según el tipo de datos
+                dtgAlquileres.Columns["IdAlquiler"].DataPropertyName = "IdAlquiler";
                 dtgAlquileres.Columns["VolquetesAlquiler"].DataPropertyName = "VolquetesToString";
                 dtgAlquileres.Columns["FechaEscogida"].DataPropertyName = "FechaEscogida";
                 dtgAlquileres.Columns["ubicacionDeEntrega"].DataPropertyName = "ubicacionDeEntrega";

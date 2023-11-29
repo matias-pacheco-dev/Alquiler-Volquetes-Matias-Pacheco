@@ -1,44 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Entidades;
+using Dominio;
+using MySql.Data.MySqlClient;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Entidades;
+using AccesoDatos;
 
 namespace Parcial_Volquete
 {
     public partial class Comercial : Form
     {
         private List<Volquete> listaVolquetes = new List<Volquete>();
+        CarritoDeCompras Carrito;
+        Action<Volquete> InformarVolquete;
+
+        bool carritoVisible = false;
+
+
+
         public Comercial()
         {
             InitializeComponent();
+            this.FormClosed += Comercial_FormClosed;
+            Carrito = new CarritoDeCompras();
         }
 
         private void btnChico_Click(object sender, EventArgs e)
         {
-            AgregarVolquete(1.75, TipoDeVolquete.Pequeño);
+            VerificarYAgregarVolquete(1.75, TipoDeVolquete.Pequeño);
         }
 
         private void btnMediano_Click(object sender, EventArgs e)
         {
-            AgregarVolquete(2.5, TipoDeVolquete.Mediano);
+            VerificarYAgregarVolquete(2.5, TipoDeVolquete.Mediano);
         }
 
         private void btnGrande_Click(object sender, EventArgs e)
         {
-            AgregarVolquete(5.0, TipoDeVolquete.Grande);
+            VerificarYAgregarVolquete(5.0, TipoDeVolquete.Grande);
         }
 
-        private void AgregarVolquete(double capacidad, TipoDeVolquete tipo)
-        {
-            Volquete nuevoVolquete = new Volquete(capacidad, tipo);
-            listaVolquetes.Add(nuevoVolquete);
-        }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
@@ -46,7 +45,71 @@ namespace Parcial_Volquete
             {
                 Reserva rv = new Reserva(listaVolquetes);
                 rv.ShowDialog();
+                rv.Dispose();
+                Carrito.Reset();
+                listaVolquetes.Clear();
             }
         }
+
+        private void btnCarrito_Click(object sender, EventArgs e)
+        {
+            if (carritoVisible == false)
+            {
+                Carrito.Show();
+                carritoVisible = true;
+            }
+            else
+            {
+                Carrito.Visible = false;
+                carritoVisible = false;
+            }
+
+        }
+
+        private void Comercial_Load(object sender, EventArgs e)
+        {
+            this.InformarVolquete += Carrito.RecibirVolquete;
+
+        }
+
+        private void Comercial_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Carrito != null)
+            {
+                Carrito.Close();
+                Carrito.Dispose();
+            }
+        }
+        private void VerificarYAgregarVolquete(double capacidad, TipoDeVolquete tipo)
+        {
+            Volquete nuevoVolquete = new Volquete(capacidad, tipo);
+
+            // Verificar si hay stock del tipo de volquete
+            if (VerificarStock(nuevoVolquete.Tipo))
+            {
+                listaVolquetes.Add(nuevoVolquete);
+                this.InformarVolquete.Invoke(nuevoVolquete);
+            }
+            else
+            {
+                VentanaEmergente ve = new VentanaEmergente("Error!", "No hay stock de ese volquete");
+                ve.ShowDialog();
+            }
+        }
+
+        private bool VerificarStock(TipoDeVolquete tipo)
+        {
+            VolqueteDao volqueteDao = new VolqueteDao();
+            Dictionary<TipoDeVolquete, int> contadores = volqueteDao.ContabilizarVolquetesPorTipoEnBD();
+
+            if (contadores.ContainsKey(tipo) && contadores[tipo] > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+       
+
     }
 }

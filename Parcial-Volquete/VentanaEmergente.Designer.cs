@@ -40,7 +40,7 @@
             lblTitulo.BackColor = Color.Transparent;
             lblTitulo.Font = new Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblTitulo.ForeColor = Color.LightGray;
-            lblTitulo.Location = new Point(86, 9);
+            lblTitulo.Location = new Point(105, 9);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(54, 24);
             lblTitulo.TabIndex = 0;
@@ -65,7 +65,7 @@
             btnAcceder.FlatStyle = FlatStyle.Flat;
             btnAcceder.Font = new Font("Arial Black", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnAcceder.ForeColor = Color.LightGray;
-            btnAcceder.Location = new Point(61, 115);
+            btnAcceder.Location = new Point(70, 122);
             btnAcceder.Name = "btnAcceder";
             btnAcceder.Size = new Size(134, 41);
             btnAcceder.TabIndex = 4;
@@ -80,7 +80,7 @@
             BackColor = Color.FromArgb(122, 0, 204);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(263, 168);
+            ClientSize = new Size(280, 185);
             Controls.Add(btnAcceder);
             Controls.Add(lblMensaje);
             Controls.Add(lblTitulo);

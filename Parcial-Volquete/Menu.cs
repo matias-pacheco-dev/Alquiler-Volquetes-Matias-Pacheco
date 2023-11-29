@@ -1,13 +1,5 @@
 ﻿using Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Dominio;
 
 namespace Parcial_Volquete
 {
@@ -17,10 +9,13 @@ namespace Parcial_Volquete
         Form Contactanos;
         Form CuentaReservas;
         Form VistaAdmin;
+
+
+        Form formularioActivo;
+
         public Menu()
         {
             InitializeComponent();
-
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -33,100 +28,65 @@ namespace Parcial_Volquete
             {
                 administradorPanelToolStripMenuItem.Visible = true;
             }
-            
+        }
+
+
+        private void CerrarFormularioActivo()
+        {
+            if (formularioActivo != null)
+            {
+                formularioActivo.Close();
+                formularioActivo = null;
+            }
         }
 
         private void comercialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (comercial == null)
-            {
-                this.comercial = new Comercial();
+            CerrarFormularioActivo();
 
-                this.comercial.MdiParent = this;
-                this.comercial.FormClosed += Comercial_FormClosed;
-                this.comercial.StartPosition = FormStartPosition.CenterScreen;
-                this.pictureBox1.Visible = false;
-
-                this.comercial.Show();
-            }
-            else
-            {
-                comercial.Activate();
-            }
+            comercial = new Comercial();
+            comercial.MdiParent = this;
+            comercial.FormClosed += Comercial_FormClosed;
+            comercial.StartPosition = FormStartPosition.CenterScreen;
+            pictureBox1.Visible = false;
+            comercial.Show();
 
 
-        }
-
-        private void Comercial_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            this.comercial = null;
+            formularioActivo = comercial;
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.comercial != null)
-            {
-                this.comercial.Close();
-            }
-            else if (this.Contactanos != null)
-            {
-                this.Contactanos.Close();
-            }
-            else if (this.CuentaReservas != null)
-            {
-                this.CuentaReservas.Close();
-            }
-            else if (this.VistaAdmin != null)
-            {
-                this.VistaAdmin.Close();
-            }
-
-            this.pictureBox1.Visible = true;
+            CerrarFormularioActivo();
+            pictureBox1.Visible = true;
         }
 
         private void contáctanosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Contactanos == null)
-            {
-                this.Contactanos = new Contactanos();
+            CerrarFormularioActivo();
 
-                this.Contactanos.MdiParent = this;
-                this.Contactanos.FormClosed += Contactanos_FormClosed;
-                this.Contactanos.StartPosition = FormStartPosition.CenterScreen;
-                this.pictureBox1.Visible = false;
-                this.Contactanos.Show();
-            }
-            else
-            {
-                this.Contactanos.Activate();
-            }
-        }
+            Contactanos = new Contactanos();
+            Contactanos.MdiParent = this;
+            Contactanos.FormClosed += Contactanos_FormClosed;
+            Contactanos.StartPosition = FormStartPosition.CenterScreen;
+            pictureBox1.Visible = false;
+            Contactanos.Show();
 
-        private void Contactanos_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            this.Contactanos = null;
+            formularioActivo = Contactanos;
         }
 
         private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CuentaReservas == null)
-            {
-                this.CuentaReservas = new Cuenta_Reservas();
-                this.CuentaReservas.MdiParent = this;
-                this.CuentaReservas.FormClosed += CuentaReservas_FormClosed;
-                this.CuentaReservas.StartPosition = FormStartPosition.CenterScreen;
-                this.pictureBox1.Visible = false;
-                this.CuentaReservas.Show();
-            }
-            else
-            {
-                this.CuentaReservas.Activate();
-            }
-        }
+            CerrarFormularioActivo();
 
-        private void CuentaReservas_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            this.CuentaReservas = null;
+            CuentaReservas = new Cuenta_Reservas();
+            CuentaReservas.MdiParent = this;
+            CuentaReservas.FormClosed += CuentaReservas_FormClosed;
+            CuentaReservas.StartPosition = FormStartPosition.CenterScreen;
+            pictureBox1.Visible = false;
+            CuentaReservas.Show();
+
+            formularioActivo = CuentaReservas;
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -137,22 +97,40 @@ namespace Parcial_Volquete
             login.Show();
         }
 
-        private void listaDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void administradorPanelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(VistaAdmin == null)
-            {
-                this.VistaAdmin = new UsersAdminView();
-                this.VistaAdmin.MdiParent = this;
-                this.VistaAdmin.FormClosed += UsersAdminView_FormClosed;
-                this.VistaAdmin.StartPosition = FormStartPosition.CenterScreen;
-                this.pictureBox1.Visible = false;
-                this.VistaAdmin.Show();
-            }
+            CerrarFormularioActivo();
+
+            VistaAdmin = new UsersAdminView();
+            VistaAdmin.MdiParent = this;
+            VistaAdmin.FormClosed += UsersAdminView_FormClosed;
+            VistaAdmin.StartPosition = FormStartPosition.CenterScreen;
+            pictureBox1.Visible = false;
+            VistaAdmin.Show();
+
+            formularioActivo = VistaAdmin;
         }
 
-        private void UsersAdminView_FormClosed(object? sender, FormClosedEventArgs e)
+        private void Comercial_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.VistaAdmin = null;
+            comercial = null;
         }
+
+        private void Contactanos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Contactanos = null;
+        }
+
+        private void CuentaReservas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CuentaReservas = null;
+        }
+
+        private void UsersAdminView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            VistaAdmin = null;
+        }
+
+
     }
 }

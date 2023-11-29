@@ -1,7 +1,7 @@
-using System.Runtime.InteropServices;
-
-using Entidades;
 using AccesoDatos;
+using Entidades;
+using System.Runtime.InteropServices;
+using Dominio;
 
 namespace Parcial_Volquete
 {
@@ -11,7 +11,7 @@ namespace Parcial_Volquete
         public Login()
         {
             InitializeComponent();
- 
+
         }
         // Importación de funciones desde user32.dll para permitir el movimiento del formulario
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -56,7 +56,7 @@ namespace Parcial_Volquete
                         this.Hide();
                     }
                 }
-                else 
+                else
                 {
                     VentanaEmergente ve = new VentanaEmergente("Log In", "Admin logueado con exito");
                     ve.ShowDialog();
@@ -112,7 +112,7 @@ namespace Parcial_Volquete
             }
         }
 
-        
+
         private void Login_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -121,7 +121,7 @@ namespace Parcial_Volquete
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            
+
             Application.Exit();
         }
 

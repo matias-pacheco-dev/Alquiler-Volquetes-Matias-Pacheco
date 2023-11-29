@@ -97,6 +97,7 @@
             btnCarrito.Size = new Size(72, 63);
             btnCarrito.TabIndex = 4;
             btnCarrito.UseVisualStyleBackColor = true;
+            btnCarrito.Click += btnCarrito_Click;
             // 
             // Comercial
             // 
@@ -114,6 +115,8 @@
             Name = "Comercial";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Comercial";
+            FormClosed += Comercial_FormClosed;
+            Load += Comercial_Load;
             ResumeLayout(false);
         }
 

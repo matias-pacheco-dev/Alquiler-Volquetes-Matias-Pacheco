@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cuenta_Reservas));
             dtgAlquileres = new DataGridView();
             lblNombreCuenta = new Label();
             lblAlquileres = new Label();
@@ -39,7 +40,7 @@
             // 
             dataGridViewCellStyle1.BackColor = Color.DarkOrange;
             dtgAlquileres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dtgAlquileres.BackgroundColor = Color.Thistle;
+            dtgAlquileres.BackgroundColor = Color.MediumPurple;
             dtgAlquileres.BorderStyle = BorderStyle.None;
             dtgAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgAlquileres.GridColor = Color.Black;
@@ -53,7 +54,7 @@
             // lblNombreCuenta
             // 
             lblNombreCuenta.AutoSize = true;
-            lblNombreCuenta.BackColor = SystemColors.ActiveCaptionText;
+            lblNombreCuenta.BackColor = Color.DarkSlateBlue;
             lblNombreCuenta.FlatStyle = FlatStyle.Flat;
             lblNombreCuenta.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombreCuenta.ForeColor = SystemColors.ControlLightLight;
@@ -66,7 +67,7 @@
             // lblAlquileres
             // 
             lblAlquileres.AutoSize = true;
-            lblAlquileres.BackColor = SystemColors.ActiveCaptionText;
+            lblAlquileres.BackColor = Color.DarkSlateBlue;
             lblAlquileres.FlatStyle = FlatStyle.Flat;
             lblAlquileres.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblAlquileres.ForeColor = SystemColors.ControlLightLight;
@@ -82,6 +83,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.ActiveCaptionText;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(796, 396);
             Controls.Add(lblAlquileres);
             Controls.Add(lblNombreCuenta);

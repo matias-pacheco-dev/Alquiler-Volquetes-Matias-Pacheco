@@ -12,7 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entidades\Entidades.csproj" />
+    <ProjectReference Include="..\Dominio\Dominio.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Dominio" />
+  </ItemGroup>
+
+  
+
+  
 
 </Project>

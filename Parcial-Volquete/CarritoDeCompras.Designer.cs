@@ -29,43 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarritoDeCompras));
-            btnExit = new Button();
             label1 = new Label();
             listBox1 = new ListBox();
             SuspendLayout();
-            // 
-            // btnExit
-            // 
-            btnExit.BackgroundImage = (Image)resources.GetObject("btnExit.BackgroundImage");
-            btnExit.BackgroundImageLayout = ImageLayout.Stretch;
-            btnExit.FlatStyle = FlatStyle.Flat;
-            btnExit.Location = new Point(162, 1);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(25, 25);
-            btnExit.TabIndex = 21;
-            btnExit.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.DarkOrange;
             label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 29);
+            label1.Font = new Font("Arial", 12.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label1.Location = new Point(12, 19);
             label1.Name = "label1";
-            label1.Size = new Size(147, 18);
+            label1.Size = new Size(163, 19);
             label1.TabIndex = 22;
             label1.Text = "Carrito de compras:";
             // 
             // listBox1
             // 
             listBox1.BackColor = Color.DarkOrange;
+            listBox1.BorderStyle = BorderStyle.None;
             listBox1.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 23;
-            listBox1.Location = new Point(12, 68);
+            listBox1.Location = new Point(12, 59);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(147, 349);
+            listBox1.Size = new Size(163, 207);
             listBox1.TabIndex = 23;
             // 
             // CarritoDeCompras
@@ -74,20 +63,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(190, 429);
+            ClientSize = new Size(187, 296);
             Controls.Add(listBox1);
             Controls.Add(label1);
-            Controls.Add(btnExit);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "CarritoDeCompras";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CarritoDeCompras";
+            Load += CarritoDeCompras_Load;
+            MouseDown += CarritoDeCompras_MouseDown;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Button btnExit;
         private Label label1;
         private ListBox listBox1;
     }

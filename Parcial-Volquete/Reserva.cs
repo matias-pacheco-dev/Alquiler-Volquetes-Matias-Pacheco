@@ -1,23 +1,14 @@
-﻿using Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using AccesoDatos;
+using Entidades;
+using Dominio;
 using System.Runtime.InteropServices;
-using System.Numerics;
-using AccesoDatos;
 
 namespace Parcial_Volquete
 {
     public partial class Reserva : Form
     {
         List<Volquete> volquetesElegidos;
-        List<Volquete> volquetesOriginales;
+
         public Reserva(List<Volquete> volqueteElegido)
         {
             InitializeComponent();
@@ -25,22 +16,11 @@ namespace Parcial_Volquete
 
         }
 
-
+        #region MoverForm
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
-
-
-
-        private void Reserva_Load(object sender, EventArgs e)
-        {
-            comboBoxPago.DataSource = Enum.GetValues(typeof(MedioDePago));
-            VolqueteDao volqueteDao = new VolqueteDao();
-            volquetesOriginales = volqueteDao.ObtenerVolquetes();
-
-        }
 
         private void Reserva_MouseDown(object sender, MouseEventArgs e)
         {
@@ -48,6 +28,15 @@ namespace Parcial_Volquete
             SendMessage(this.Handle, 0x112, 0xf012, 0);
 
         }
+        #endregion
+
+        private void Reserva_Load(object sender, EventArgs e)
+        {
+            comboBoxPago.DataSource = Enum.GetValues(typeof(MedioDePago));
+
+        }
+
+
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
@@ -60,24 +49,28 @@ namespace Parcial_Volquete
 
                 precio = calcularPrecio(plazo, precio);
 
+                AlquilerDao alquilerDao = new AlquilerDao();
+                int idAlquiler = alquilerDao.ContabilizarAlquileresEnBD();
 
-                Alquiler alquilerActual = new Alquiler(volquetesElegidos, fechaSeleccionada, txtDireccion.Text, txtNombre.Text, txtEmail.Text,
-                    txtTelefono.Text, plazo, precio, medioPago);
+                Alquiler alquilerActual = new Alquiler(volquetesElegidos, fechaSeleccionada, txtDireccion.Text, txtNombre.Text,
+                    txtEmail.Text, txtTelefono.Text, plazo, precio, medioPago, idAlquiler);
 
                 GestionUsuarios.UsuarioActual.AgregarAlquiler(alquilerActual);
 
-                reducirStock();
+                alquilerDao.AgregarAlquilerEnBD(alquilerActual, GestionUsuarios.UsuarioActual.idDB);
+
+                VolqueteDao volqueteDao = new VolqueteDao();
+
+                volqueteDao.ActualizarVolquetesEnBD(idAlquiler, volquetesElegidos);
 
                 VentanaEmergente ve = new VentanaEmergente("Reserva", "Reservado con éxito");
                 ve.ShowDialog();
                 if (ve.DialogResult == DialogResult.OK)
                 {
                     this.Close();
+
                 }
             }
-
-
-
 
         }
 
@@ -89,7 +82,8 @@ namespace Parcial_Volquete
 
         private decimal calcularPrecio(string plazo, decimal precio)
         {
-            foreach (Volquete volqueteElegido in volquetesElegidos) {
+            foreach (Volquete volqueteElegido in volquetesElegidos)
+            {
                 switch (plazo)
                 {
                     case "24hs":
@@ -184,25 +178,7 @@ namespace Parcial_Volquete
 
         }
 
-        private void reducirStock()
-        {
-            VolqueteDao volqueteDao = new VolqueteDao();
 
-            foreach (Volquete volqueteElegido in volquetesElegidos)
-            {
-                
-                Volquete volqueteOriginal = volquetesOriginales.Find(v => v.Tipo == volqueteElegido.Tipo);
 
-                if (volqueteOriginal != null)
-                {
-                    
-                    int nuevoStock = volqueteOriginal.Stock - 1;
-
-                    
-                    volqueteDao.ActualizarStockEnBD(volqueteElegido.Tipo, nuevoStock);
-                }
-            }
-        }
-
-    } 
+    }
 }

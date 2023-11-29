@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj" />
+    <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Entidades\Entidades.csproj" />
   </ItemGroup>
 

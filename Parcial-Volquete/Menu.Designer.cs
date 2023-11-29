@@ -44,7 +44,6 @@
             reservasToolStripMenuItem = new ToolStripMenuItem();
             logOutToolStripMenuItem = new ToolStripMenuItem();
             administradorPanelToolStripMenuItem = new ToolStripMenuItem();
-            listaDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -71,8 +70,8 @@
             // comercialToolStripMenuItem
             // 
             comercialToolStripMenuItem.Name = "comercialToolStripMenuItem";
-            comercialToolStripMenuItem.Size = new Size(92, 22);
-            comercialToolStripMenuItem.Text = "Comercial";
+            comercialToolStripMenuItem.Size = new Size(148, 22);
+            comercialToolStripMenuItem.Text = "Reservar Volquete";
             comercialToolStripMenuItem.Click += comercialToolStripMenuItem_Click;
             // 
             // coberturaToolStripMenuItem
@@ -149,17 +148,10 @@
             // 
             // administradorPanelToolStripMenuItem
             // 
-            administradorPanelToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listaDeUsuariosToolStripMenuItem });
             administradorPanelToolStripMenuItem.Name = "administradorPanelToolStripMenuItem";
             administradorPanelToolStripMenuItem.Size = new Size(118, 22);
             administradorPanelToolStripMenuItem.Text = "Administrador";
-            // 
-            // listaDeUsuariosToolStripMenuItem
-            // 
-            listaDeUsuariosToolStripMenuItem.Name = "listaDeUsuariosToolStripMenuItem";
-            listaDeUsuariosToolStripMenuItem.Size = new Size(201, 22);
-            listaDeUsuariosToolStripMenuItem.Text = "Lista De Usuarios";
-            listaDeUsuariosToolStripMenuItem.Click += listaDeUsuariosToolStripMenuItem_Click;
+            administradorPanelToolStripMenuItem.Click += administradorPanelToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
@@ -215,6 +207,5 @@
         private ToolStripMenuItem corrientesToolStripMenuItem;
         private ToolStripMenuItem entreRíosToolStripMenuItem;
         private ToolStripMenuItem administradorPanelToolStripMenuItem;
-        private ToolStripMenuItem listaDeUsuariosToolStripMenuItem;
     }
 }

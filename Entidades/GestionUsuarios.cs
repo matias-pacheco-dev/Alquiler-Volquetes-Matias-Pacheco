@@ -1,11 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-
+﻿using AccesoDatos;
+using Dominio;
 namespace Entidades
 {
 
@@ -44,8 +38,9 @@ namespace Entidades
         }
 
 
+        
 
-        #region
+        #region JSON
         public static void CargarUsuariosDesdeJSON()
         {
             string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "usuarios.json");
@@ -74,9 +69,9 @@ namespace Entidades
         #endregion
 
 
-       
 
-        
+
+
 
 
 
