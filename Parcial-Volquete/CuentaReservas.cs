@@ -1,17 +1,21 @@
 ﻿using Entidades;
 using Dominio;
+using AccesoDatos;
 
 namespace Parcial_Volquete
 {
     public partial class Cuenta_Reservas : Form
     {
+        AlquilerDao alquilerdao;
         public Cuenta_Reservas()
         {
             InitializeComponent();
+            alquilerdao = new AlquilerDao();
         }
 
         private void Cuenta_Reservas_Load(object sender, EventArgs e)
         {
+            #region dtgAlquileres
             if (GestionUsuarios.UsuarioActual != null)
             {
                 dtgAlquileres.Refresh();
@@ -53,18 +57,39 @@ namespace Parcial_Volquete
 
                 lblNombreCuenta.Text = GestionUsuarios.UsuarioActual.id;
 
-
-
             }
+            #endregion
+
+            List<int> listaIdsAlquileres = GestionUsuarios.UsuarioActual.alquileres.Select(alquiler => alquiler.IdAlquiler).ToList();
 
 
+            comboBaja.DataSource = listaIdsAlquileres;
 
 
         }
 
-        private void dtgAlquileres_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnBaja_Click(object sender, EventArgs e)
         {
+            int idAlquiler = (int)comboBaja.SelectedValue;
 
+            // Eliminar alquiler de la base de datos
+            alquilerdao.EliminarAlquiler(idAlquiler);
+
+            // Buscar y eliminar el alquiler de GestionUsuarios.UsuarioActual.alquileres
+            Alquiler alquilerAEliminar = GestionUsuarios.UsuarioActual.alquileres.FirstOrDefault(a => a.IdAlquiler == idAlquiler);
+
+            if (alquilerAEliminar != null)
+            {
+                GestionUsuarios.UsuarioActual.alquileres.Remove(alquilerAEliminar);
+
+                dtgAlquileres.DataSource = null; // Desvincular el origen de datos
+                dtgAlquileres.DataSource = GestionUsuarios.UsuarioActual.alquileres; // Vincular el origen de datos nuevamente
+                dtgAlquileres.Refresh();
+
+                List<int> listaIdsAlquileres = GestionUsuarios.UsuarioActual.alquileres.Select(alquiler => alquiler.IdAlquiler).ToList();
+                comboBaja.DataSource = listaIdsAlquileres;
+
+            }
         }
     }
 }

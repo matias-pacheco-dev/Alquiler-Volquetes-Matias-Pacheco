@@ -33,6 +33,9 @@
             dtgAlquileres = new DataGridView();
             lblNombreCuenta = new Label();
             lblAlquileres = new Label();
+            btnBaja = new Button();
+            btnEditarAlquiler = new Button();
+            comboBaja = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dtgAlquileres).BeginInit();
             SuspendLayout();
             // 
@@ -44,12 +47,11 @@
             dtgAlquileres.BorderStyle = BorderStyle.None;
             dtgAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgAlquileres.GridColor = Color.Black;
-            dtgAlquileres.Location = new Point(0, 41);
+            dtgAlquileres.Location = new Point(382, 45);
             dtgAlquileres.Name = "dtgAlquileres";
             dtgAlquileres.RowTemplate.Height = 25;
-            dtgAlquileres.Size = new Size(794, 362);
+            dtgAlquileres.Size = new Size(412, 339);
             dtgAlquileres.TabIndex = 0;
-            dtgAlquileres.CellContentClick += dtgAlquileres_CellContentClick;
             // 
             // lblNombreCuenta
             // 
@@ -77,6 +79,43 @@
             lblAlquileres.TabIndex = 2;
             lblAlquileres.Text = "Tus alquileres:";
             // 
+            // btnBaja
+            // 
+            btnBaja.BackgroundImage = (Image)resources.GetObject("btnBaja.BackgroundImage");
+            btnBaja.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBaja.FlatStyle = FlatStyle.Flat;
+            btnBaja.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBaja.ForeColor = SystemColors.Control;
+            btnBaja.Location = new Point(149, 81);
+            btnBaja.Name = "btnBaja";
+            btnBaja.Size = new Size(200, 28);
+            btnBaja.TabIndex = 3;
+            btnBaja.Text = "Dar de baja una reserva";
+            btnBaja.UseVisualStyleBackColor = true;
+            btnBaja.Click += btnBaja_Click;
+            // 
+            // btnEditarAlquiler
+            // 
+            btnEditarAlquiler.BackgroundImage = (Image)resources.GetObject("btnEditarAlquiler.BackgroundImage");
+            btnEditarAlquiler.BackgroundImageLayout = ImageLayout.Stretch;
+            btnEditarAlquiler.FlatStyle = FlatStyle.Flat;
+            btnEditarAlquiler.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditarAlquiler.ForeColor = SystemColors.Control;
+            btnEditarAlquiler.Location = new Point(149, 197);
+            btnEditarAlquiler.Name = "btnEditarAlquiler";
+            btnEditarAlquiler.Size = new Size(200, 28);
+            btnEditarAlquiler.TabIndex = 4;
+            btnEditarAlquiler.Text = "Modificar reserva";
+            btnEditarAlquiler.UseVisualStyleBackColor = true;
+            // 
+            // comboBaja
+            // 
+            comboBaja.FormattingEnabled = true;
+            comboBaja.Location = new Point(12, 81);
+            comboBaja.Name = "comboBaja";
+            comboBaja.Size = new Size(121, 23);
+            comboBaja.TabIndex = 5;
+            // 
             // Cuenta_Reservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -85,6 +124,9 @@
             BackColor = SystemColors.ActiveCaptionText;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(796, 396);
+            Controls.Add(comboBaja);
+            Controls.Add(btnEditarAlquiler);
+            Controls.Add(btnBaja);
             Controls.Add(lblAlquileres);
             Controls.Add(lblNombreCuenta);
             Controls.Add(dtgAlquileres);
@@ -104,5 +146,8 @@
         private DataGridView dtgAlquileres;
         private Label lblNombreCuenta;
         private Label lblAlquileres;
+        private Button btnBaja;
+        private Button btnEditarAlquiler;
+        private ComboBox comboBaja;
     }
 }
