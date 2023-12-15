@@ -20,22 +20,6 @@ namespace Parcial_Volquete
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
 
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAcceder_Click(object sender, EventArgs e)
         {
             try

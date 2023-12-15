@@ -4,57 +4,14 @@ using System.Data;
 
 namespace AccesoDatos
 {
-    public class AlquilerDao : MyConnectionToSql
+    public class AlquilerDao : BaseDao<Alquiler>
     {
         public List<Alquiler> ObtenerAlquileres()
         {
-            List<Alquiler> alquileres = new List<Alquiler>();
-
-            using (var connection = GetConnection())
-            {
-                connection.Open();
-                using (var command = new MySqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = "SELECT * FROM alquiler";
-                    command.CommandType = CommandType.Text;
-
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string valorMedioDePago = reader["Medio De Pago"].ToString();
-                            string valorEstado = reader["Estado"].ToString();
-
-                            int IdAlquiler = Convert.ToInt32(reader["Id"]);
-                            DateTime fechaEscogida = Convert.ToDateTime(reader["FechaEscogida"]);
-                            MedioDePago medioDePago = (MedioDePago)Enum.Parse(typeof(MedioDePago), valorMedioDePago);
-                            EstadosAlquiler estado = (EstadosAlquiler)Enum.Parse(typeof(EstadosAlquiler), valorEstado);
-                            string ubicacionDeEntrega = reader["UbicacionDeEntrega"].ToString();
-                            string nombre = reader["Nombre"].ToString();
-                            string email = reader["Email"].ToString();
-                            string numeroDeTelefono = reader["NumeroDeTelefono"].ToString();
-                            string duracion = reader["Plazo"].ToString();
-                            decimal precio = Convert.ToDecimal(reader["Precio"]);
-
-                            VolqueteDao volqueteDao = new VolqueteDao();
-
-                            List<Volquete> volquetes = volqueteDao.ObtenerVolquetesAlquiladosEnBD(IdAlquiler);
-
-                            Alquiler alquiler = new Alquiler(volquetes, fechaEscogida, ubicacionDeEntrega, nombre, email,
-                                numeroDeTelefono, duracion, precio, medioDePago, IdAlquiler);
-                            alquiler.estado = estado;
-
-                            alquileres.Add(alquiler);
-                        }
-                    }
-                }
-
-            }
-
-            return alquileres;
+            string query = "SELECT * FROM alquiler";
+            return ExecuteQuery(query, mapFunction: MapAlquiler);
         }
-    
+
 
 
 
@@ -183,6 +140,33 @@ namespace AccesoDatos
             }
 
         }
+        private Alquiler MapAlquiler(MySqlDataReader reader)
+        {
+            string valorMedioDePago = reader["Medio De Pago"].ToString();
+            string valorEstado = reader["Estado"].ToString();
+
+            int IdAlquiler = Convert.ToInt32(reader["Id"]);
+            DateTime fechaEscogida = Convert.ToDateTime(reader["FechaEscogida"]);
+            MedioDePago medioDePago = (MedioDePago)Enum.Parse(typeof(MedioDePago), valorMedioDePago);
+            EstadosAlquiler estado = (EstadosAlquiler)Enum.Parse(typeof(EstadosAlquiler), valorEstado);
+            string ubicacionDeEntrega = reader["UbicacionDeEntrega"].ToString();
+            string nombre = reader["Nombre"].ToString();
+            string email = reader["Email"].ToString();
+            string numeroDeTelefono = reader["NumeroDeTelefono"].ToString();
+            string duracion = reader["Plazo"].ToString();
+            decimal precio = Convert.ToDecimal(reader["Precio"]);
+
+            VolqueteDao volqueteDao = new VolqueteDao();
+
+            List<Volquete> volquetes = volqueteDao.ObtenerVolquetesAlquiladosEnBD(IdAlquiler);
+
+            Alquiler alquiler = new Alquiler(volquetes, fechaEscogida, ubicacionDeEntrega, nombre, email,
+                numeroDeTelefono, duracion, precio, medioDePago, IdAlquiler);
+            alquiler.estado = estado;
+
+            return alquiler;
+        }
+
 
     }
 }

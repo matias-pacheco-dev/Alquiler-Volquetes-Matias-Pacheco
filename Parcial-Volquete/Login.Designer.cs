@@ -82,7 +82,7 @@
             lblLogin.Size = new Size(115, 36);
             lblLogin.TabIndex = 5;
             lblLogin.Text = "LOGIN";
-            lblLogin.Click += lblLogin_Click;
+
             // 
             // txtUser
             // 
@@ -200,7 +200,6 @@
             Opacity = 0.95D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            Load += Login_Load;
             MouseDown += Login_MouseDown;
             ResumeLayout(false);
             PerformLayout();

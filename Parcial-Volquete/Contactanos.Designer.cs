@@ -42,7 +42,6 @@
             Name = "Contactanos";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Contactanos";
-            Load += Contactanos_Load;
             ResumeLayout(false);
         }
 

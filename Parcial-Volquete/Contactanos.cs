@@ -8,9 +8,5 @@ namespace Parcial_Volquete
             InitializeComponent();
         }
 
-        private void Contactanos_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
