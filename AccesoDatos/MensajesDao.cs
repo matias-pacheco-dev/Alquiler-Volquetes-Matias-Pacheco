@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
-    public class MensajesDao: BaseDao<Alquiler>
+    public class MensajesDao : BaseDao<Mensaje>
     {
-        // Agrega un método para insertar un mensaje en la base de datos
-        public void InsertarMensaje(string mensaje, int IdUsuario)
+        public void InsertarMensaje(Mensaje mensaje)
         {
-            string query = "INSERT INTO mensajes (ID_usuario, Mensaje) VALUES (@id_usuario, @Mensaje)";
+            string query = "INSERT INTO mensajes (ID_usuario, Remitente, Mensaje) VALUES (@id_usuario, @Remitente, @Mensaje)";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                { "@Mensaje", mensaje},
-                { "@id_usuario", IdUsuario}
+                { "@Mensaje", mensaje.Contenido },
+                { "@id_usuario", mensaje.Destinatario },
+                { "@Remitente", mensaje.Remitente }
             };
 
             ExecuteScalar(query, parameters);
         }
 
-        public List<string> ObtenerMensajesPorIdUsuario(int IdUsuario)
+        public Queue<Mensaje> ObtenerMensajesPorIdUsuario(int IdUsuario)
         {
-            List<string> mensajes = new List<string>();
-            string query = "SELECT Mensaje FROM mensajes WHERE ID_usuario = @id_usuario";
+            Queue<Mensaje> mensajes = new Queue<Mensaje>();
+            string query = "SELECT Remitente, ID_usuario, Mensaje FROM mensajes WHERE ID_usuario = @id_usuario";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
@@ -36,12 +36,19 @@ namespace AccesoDatos
             {
                 while (reader.Read())
                 {
-                    mensajes.Add(Convert.ToString(reader["Mensaje"]));
+                    Mensaje mensaje = new Mensaje(
+                        Convert.ToString(reader["Remitente"]),
+                        Convert.ToInt32(reader["ID_usuario"]),
+                        Convert.ToString(reader["Mensaje"])
+                    );
+
+                    mensajes.Enqueue(mensaje);
                 }
             });
 
             return mensajes;
         }
+
     }
 }
 

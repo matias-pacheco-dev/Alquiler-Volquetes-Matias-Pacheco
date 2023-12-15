@@ -100,7 +100,7 @@ namespace Parcial_Volquete
 
                 dtgAlquileres.DataSource = alquilerdao.ObtenerAlquileres();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // Manejar la excepción
                 MessageBox.Show($"Error al intentar cargar alquileres: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -226,7 +226,7 @@ namespace Parcial_Volquete
                 });
             }
         }
-    
+
 
         private void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
@@ -256,6 +256,12 @@ namespace Parcial_Volquete
         {
             VentanaAgregarVolquete ViewAgregarVolquete = new VentanaAgregarVolquete();
             ViewAgregarVolquete.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BuzonAdmin buzon = new BuzonAdmin();
+            buzon.ShowDialog();
         }
     }
 }

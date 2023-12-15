@@ -1,5 +1,6 @@
 ﻿using AccesoDatos;
 using Dominio;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,23 +41,20 @@ namespace Parcial_Volquete
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            // Obtener el usuario seleccionado en el ComboBox
             Usuario administradorSeleccionado = comboBox.SelectedItem as Usuario;
 
             if (administradorSeleccionado != null)
             {
-                // Obtener el ID del usuario seleccionado
                 int idUsuario = administradorSeleccionado.idDB;
+                string mensajeContenido = richTextBox.Text;
+                string remitente = GestionUsuarios.UsuarioActual.id;
 
-                // Obtener el mensaje del TextBox (asegúrate de tener el nombre correcto del TextBox)
-                string mensaje = richTextBox.Text;
-
-                // Validar que el mensaje no esté vacío antes de enviarlo a la base de datos
-                if (!string.IsNullOrWhiteSpace(mensaje))
+                if (!string.IsNullOrWhiteSpace(mensajeContenido))
                 {
-                    // Enviar el mensaje a la base de datos
+                    Mensaje mensaje = new Mensaje(remitente, idUsuario, mensajeContenido);
+
                     MensajesDao mensajesDao = new MensajesDao();
-                    mensajesDao.InsertarMensaje(mensaje, idUsuario);
+                    mensajesDao.InsertarMensaje(mensaje);
 
                     // Opcional: Mostrar un mensaje de éxito
                     VentanaEmergente ve = new VentanaEmergente("Mensaje Enviado", "Devuelto a Reservas");
@@ -65,17 +63,14 @@ namespace Parcial_Volquete
                     {
                         this.Close();
                     }
-
                 }
                 else
                 {
-                    // Mostrar un mensaje de error si el mensaje está vacío
                     MessageBox.Show("Por favor, ingrese un mensaje antes de enviar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                // Mostrar un mensaje de error si no se selecciona ningún administrador
                 MessageBox.Show("Por favor, seleccione un administrador antes de enviar el mensaje.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

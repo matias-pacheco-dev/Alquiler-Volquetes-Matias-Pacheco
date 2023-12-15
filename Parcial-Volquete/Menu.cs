@@ -28,10 +28,10 @@ namespace Parcial_Volquete
             }
             else
             {
-                reservasToolStripMenuItem.Visible = false;
                 cuentaToolStripMenuItem.Visible = false;
+                comercialToolStripMenuItem.Visible = false;
             }
-            
+
 
         }
 

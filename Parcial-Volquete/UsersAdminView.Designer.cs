@@ -36,6 +36,7 @@
             btnAdministrarAlquileres = new Button();
             dtgAlquileres = new DataGridView();
             btnAgregarVolquete = new Button();
+            btnBuzon = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgListaUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dtgAlquileres).BeginInit();
             SuspendLayout();
@@ -130,6 +131,20 @@
             btnAgregarVolquete.UseVisualStyleBackColor = true;
             btnAgregarVolquete.Click += btnAgregarVolquete_Click;
             // 
+            // btnBuzon
+            // 
+            btnBuzon.BackgroundImage = (Image)resources.GetObject("btnBuzon.BackgroundImage");
+            btnBuzon.FlatStyle = FlatStyle.Flat;
+            btnBuzon.Font = new Font("Arial Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBuzon.ForeColor = SystemColors.Control;
+            btnBuzon.Location = new Point(91, 32);
+            btnBuzon.Name = "btnBuzon";
+            btnBuzon.Size = new Size(209, 30);
+            btnBuzon.TabIndex = 7;
+            btnBuzon.Text = "Buzon";
+            btnBuzon.UseVisualStyleBackColor = true;
+            btnBuzon.Click += button1_Click;
+            // 
             // UsersAdminView
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
@@ -137,6 +152,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(796, 396);
+            Controls.Add(btnBuzon);
             Controls.Add(btnAgregarVolquete);
             Controls.Add(dtgAlquileres);
             Controls.Add(btnAdministrarAlquileres);
@@ -163,5 +179,6 @@
         private Button btnAdministrarAlquileres;
         private DataGridView dtgAlquileres;
         private Button btnAgregarVolquete;
+        private Button btnBuzon;
     }
 }

@@ -78,5 +78,33 @@ namespace AccesoDatos
                 }
             }
         }
+        protected void ExecuteReader(string query, Dictionary<string, object> parameters, Action<MySqlDataReader> action)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+
+                using (var command = new MySqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = query;
+
+                    if (parameters != null)
+                    {
+                        foreach (var parameter in parameters)
+                        {
+                            command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                        }
+                    }
+
+                    command.CommandType = CommandType.Text;
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        action(reader);
+                    }
+                }
+            }
+        }
     }
 }
