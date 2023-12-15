@@ -69,6 +69,12 @@ namespace AccesoDatos
 
             return null;
         }
+        public List<Usuario> ObtenerAdministradores()
+        {
+            string query = "SELECT * FROM usuarios WHERE TipoUsuario = 2";
+            return ExecuteQuery(query, mapFunction: MapUsuario);
+        }
+
     }
 
 }

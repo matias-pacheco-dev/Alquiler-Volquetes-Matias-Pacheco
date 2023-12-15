@@ -36,6 +36,7 @@
             btnBaja = new Button();
             btnGuardarXML = new Button();
             comboBaja = new ComboBox();
+            btnEditar = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgAlquileres).BeginInit();
             SuspendLayout();
             // 
@@ -118,6 +119,21 @@
             comboBaja.Size = new Size(121, 23);
             comboBaja.TabIndex = 5;
             // 
+            // btnEditar
+            // 
+            btnEditar.BackgroundImage = (Image)resources.GetObject("btnEditar.BackgroundImage");
+            btnEditar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditar.ForeColor = SystemColors.Control;
+            btnEditar.Location = new Point(149, 281);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(200, 28);
+            btnEditar.TabIndex = 6;
+            btnEditar.Text = "Modificar alquiler";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
             // Cuenta_Reservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -126,6 +142,7 @@
             BackColor = SystemColors.ActiveCaptionText;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(796, 396);
+            Controls.Add(btnEditar);
             Controls.Add(comboBaja);
             Controls.Add(btnGuardarXML);
             Controls.Add(btnBaja);
@@ -151,5 +168,6 @@
         private Button btnBaja;
         private Button btnGuardarXML;
         private ComboBox comboBaja;
+        private Button btnEditar;
     }
 }

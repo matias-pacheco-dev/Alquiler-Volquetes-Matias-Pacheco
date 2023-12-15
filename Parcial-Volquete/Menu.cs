@@ -23,25 +23,16 @@ namespace Parcial_Volquete
             if (GestionUsuarios.UsuarioActual != null)
             {
                 administradorPanelToolStripMenuItem.Visible = false;
-
-                // Verifica si el usuario actual es un cliente
-                if (GestionUsuarios.UsuarioActual.TipoUsuario == TipoDeUsuario.Cliente)
-                {
-                    reservasToolStripMenuItem.Visible = true;
-                    cuentaToolStripMenuItem.Visible = true;
-                }
-                else
-                {
-                    reservasToolStripMenuItem.Visible = false;
-                    cuentaToolStripMenuItem.Visible = false;
-                }
+                reservasToolStripMenuItem.Visible = true;
+                cuentaToolStripMenuItem.Visible = true;
             }
             else
             {
-                administradorPanelToolStripMenuItem.Visible = true;
                 reservasToolStripMenuItem.Visible = false;
                 cuentaToolStripMenuItem.Visible = false;
             }
+            
+
         }
 
 

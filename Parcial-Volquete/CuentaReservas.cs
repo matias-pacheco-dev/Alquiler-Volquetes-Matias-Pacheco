@@ -99,5 +99,11 @@ namespace Parcial_Volquete
         {
             Serializadora.GuardarAlquileresEnXML(GestionUsuarios.UsuarioActual.alquileres, "TusAlquileres");
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            EnviarMensaje veEnviarMensaje = new EnviarMensaje();
+            veEnviarMensaje.ShowDialog();
+        }
     }
 }
