@@ -34,7 +34,7 @@
             lblNombreCuenta = new Label();
             lblAlquileres = new Label();
             btnBaja = new Button();
-            btnEditarAlquiler = new Button();
+            btnGuardarXML = new Button();
             comboBaja = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dtgAlquileres).BeginInit();
             SuspendLayout();
@@ -49,6 +49,7 @@
             dtgAlquileres.GridColor = Color.Black;
             dtgAlquileres.Location = new Point(382, 45);
             dtgAlquileres.Name = "dtgAlquileres";
+            dtgAlquileres.RowHeadersVisible = false;
             dtgAlquileres.RowTemplate.Height = 25;
             dtgAlquileres.Size = new Size(412, 339);
             dtgAlquileres.TabIndex = 0;
@@ -94,19 +95,20 @@
             btnBaja.UseVisualStyleBackColor = true;
             btnBaja.Click += btnBaja_Click;
             // 
-            // btnEditarAlquiler
+            // btnGuardarXML
             // 
-            btnEditarAlquiler.BackgroundImage = (Image)resources.GetObject("btnEditarAlquiler.BackgroundImage");
-            btnEditarAlquiler.BackgroundImageLayout = ImageLayout.Stretch;
-            btnEditarAlquiler.FlatStyle = FlatStyle.Flat;
-            btnEditarAlquiler.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarAlquiler.ForeColor = SystemColors.Control;
-            btnEditarAlquiler.Location = new Point(149, 197);
-            btnEditarAlquiler.Name = "btnEditarAlquiler";
-            btnEditarAlquiler.Size = new Size(200, 28);
-            btnEditarAlquiler.TabIndex = 4;
-            btnEditarAlquiler.Text = "Modificar reserva";
-            btnEditarAlquiler.UseVisualStyleBackColor = true;
+            btnGuardarXML.BackgroundImage = (Image)resources.GetObject("btnGuardarXML.BackgroundImage");
+            btnGuardarXML.BackgroundImageLayout = ImageLayout.Stretch;
+            btnGuardarXML.FlatStyle = FlatStyle.Flat;
+            btnGuardarXML.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardarXML.ForeColor = SystemColors.Control;
+            btnGuardarXML.Location = new Point(149, 197);
+            btnGuardarXML.Name = "btnGuardarXML";
+            btnGuardarXML.Size = new Size(200, 28);
+            btnGuardarXML.TabIndex = 4;
+            btnGuardarXML.Text = "Guardar en XML";
+            btnGuardarXML.UseVisualStyleBackColor = true;
+            btnGuardarXML.Click += btnGuardarXML_Click;
             // 
             // comboBaja
             // 
@@ -125,7 +127,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(796, 396);
             Controls.Add(comboBaja);
-            Controls.Add(btnEditarAlquiler);
+            Controls.Add(btnGuardarXML);
             Controls.Add(btnBaja);
             Controls.Add(lblAlquileres);
             Controls.Add(lblNombreCuenta);
@@ -147,7 +149,7 @@
         private Label lblNombreCuenta;
         private Label lblAlquileres;
         private Button btnBaja;
-        private Button btnEditarAlquiler;
+        private Button btnGuardarXML;
         private ComboBox comboBaja;
     }
 }

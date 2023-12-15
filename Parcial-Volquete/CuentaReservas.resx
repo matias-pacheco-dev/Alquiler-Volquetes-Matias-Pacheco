@@ -268,10 +268,10 @@
         RERERGCMEREREREcCIiIiLT7YiIjcRF0+h5iMGCIi6nT4MmDeDBg1n1jzEcDBERERERgjBERERERGP/Z
 </value>
   </data>
-  <data name="btnEditarAlquiler.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnGuardarXML.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAnIAAAF3CAIAAACuaTHsAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAA1CNJREFUeF7s3YefFdW2L/oxxwxVa3WDWRSQHARUUJKoBMlZgoIimAgGVEyImLPb
+        DgAACw4BQL7hQQAA1CNJREFUeF7s3YefFdW2L/oxxwxVa3WDWRSQHARUUJKoBMlZgoIimAgGVEyImLPb
         tPfWneM55557373vvn/y/cYYtaqrmyASums1c3/GWZ8WPXSNNavGt0bVrFl07v+cBpNDhPMEIWIvUi8K
         jVKjo9El15XPoRhwEoONmEhV3OCquJEc4mZytxDf4lwdtxLVcbsbijudQ0wmN8XxXY7qmEYS0zVm9WKG
         o5lM0z1NZXcb0QTdWmQR2CNZ/M+ytrwsC8tIknLDc2nEYCMsnRsb0dt+ids0JpG7gxhxJ3n7oReSDnLR
@@ -1182,7 +1182,7 @@
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABVYAAAMACAIAAABAXKuVAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAEn1JREFUeF7t2AENACAMwDCMPJi5f034YE2qoufOAgAAAN9TAAAAAJCgAAAAACBB
+        vQAADr0BR/uQrQAAEn1JREFUeF7t2AENACAMwDCMPJi5f034YE2qoufOAgAAAN9TAAAAAJCgAAAAACBB
         AQAAAECCAgAAAIAEBQAAAAAJCgAAAAASFAAAAAAkKAAAAABIUAAAAACQoAAAAAAgQQEAAABAggIAAACA
         BAUAAAAACQoAAAAAEhQAAAAAJCgAAAAASFAAAAAAkKAAAAAAIEEBAAAAQIICAAAAgAQFAAAAAAkKAAAA
         ABIUAAAAACQoAAAAAEhQAAAAAJCgAAAAACBBAQAAAECCAgAAAIAEBQAAAAAJCgAAAAASFAAAAAAkKAAA

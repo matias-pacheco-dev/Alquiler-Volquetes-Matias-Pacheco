@@ -40,38 +40,76 @@ namespace Parcial_Volquete
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (GestionUsuarios.UsuarioActual != null)
+            try
             {
-                DateTime fechaSeleccionada = dateTimePicker1.Value;
-                MedioDePago medioPago = (MedioDePago)comboBoxPago.SelectedValue;
-                string plazo = comboBoxPlazo.Text;
-                decimal precio = 0m;
-
-                precio = calcularPrecio(plazo, precio);
-
-                AlquilerDao alquilerDao = new AlquilerDao();
-                int idAlquiler = alquilerDao.ContabilizarAlquileresEnBD();
-
-                Alquiler alquilerActual = new Alquiler(volquetesElegidos, fechaSeleccionada, txtDireccion.Text, txtNombre.Text,
-                    txtEmail.Text, txtTelefono.Text, plazo, precio, medioPago, idAlquiler);
-
-                GestionUsuarios.UsuarioActual.AgregarAlquiler(alquilerActual);
-
-                alquilerDao.AgregarAlquilerEnBD(alquilerActual, GestionUsuarios.UsuarioActual.idDB);
-
-                VolqueteDao volqueteDao = new VolqueteDao();
-
-                volqueteDao.ActualizarVolquetesEnBD(idAlquiler, volquetesElegidos);
-
-                VentanaEmergente ve = new VentanaEmergente("Reserva", "Reservado con éxito");
-                ve.ShowDialog();
-                if (ve.DialogResult == DialogResult.OK)
+                if (GestionUsuarios.UsuarioActual != null)
                 {
-                    this.Close();
+                    if (!string.IsNullOrWhiteSpace(txtDireccion.Text) &&
+                        !string.IsNullOrWhiteSpace(txtNombre.Text) &&
+                        !string.IsNullOrWhiteSpace(txtEmail.Text) &&
+                        !string.IsNullOrWhiteSpace(txtTelefono.Text))
+                    {
 
+                        DateTime fechaSeleccionada = dateTimePicker1.Value;
+                        MedioDePago medioPago = (MedioDePago)comboBoxPago.SelectedValue;
+                        string plazo = comboBoxPlazo.Text;
+                        decimal precio = 0m;
+
+                        precio = calcularPrecio(plazo, precio);
+
+                        AlquilerDao alquilerDao = new AlquilerDao();
+                        int idAlquiler = alquilerDao.ContabilizarAlquileresEnBD();
+
+                        Alquiler alquilerActual = new Alquiler(volquetesElegidos, fechaSeleccionada, txtDireccion.Text, txtNombre.Text,
+                            txtEmail.Text, txtTelefono.Text, plazo, precio, medioPago, idAlquiler);
+
+                        if (medioPago == MedioDePago.TarjetaDeCredito)
+                        {
+                            PagoTarjeta vePagoTarjeta = new PagoTarjeta(precio, alquilerActual, volquetesElegidos);
+                            vePagoTarjeta.ShowDialog();
+                        }
+                        else if (medioPago == MedioDePago.Transferencia)
+                        {
+                            Transferencia pagoTransferencia = new Transferencia();
+
+                            pagoTransferencia.ProcesarPago(precio);
+                            pagoTransferencia.GenerarFactura(alquilerActual);
+
+                            GestionUsuarios.UsuarioActual.AgregarAlquiler(alquilerActual);
+                            alquilerDao.AgregarAlquilerEnBD(alquilerActual, GestionUsuarios.UsuarioActual.idDB);
+
+                            VolqueteDao volqueteDao = new VolqueteDao();
+                            volqueteDao.ActualizarVolquetesEnBD(alquilerActual.IdAlquiler, volquetesElegidos);
+
+                            VentanaEmergente ve = new VentanaEmergente("Reserva", "Reservado con éxito");
+                            ve.ShowDialog();
+                            if (ve.DialogResult == DialogResult.OK)
+                            {
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            GestionUsuarios.UsuarioActual.AgregarAlquiler(alquilerActual);
+                            alquilerDao.AgregarAlquilerEnBD(alquilerActual, GestionUsuarios.UsuarioActual.idDB);
+
+                            VolqueteDao volqueteDao = new VolqueteDao();
+                            volqueteDao.ActualizarVolquetesEnBD(alquilerActual.IdAlquiler, volquetesElegidos);
+
+                            VentanaEmergente ve = new VentanaEmergente("Reserva", "Reservado con éxito");
+                            ve.ShowDialog();
+                            if (ve.DialogResult == DialogResult.OK)
+                            {
+                                this.Close();
+                            }
+                        }
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                ManejarError(ex, "Error al confirmar la reserva.");
+            }
         }
 
 
@@ -179,6 +217,16 @@ namespace Parcial_Volquete
         }
 
 
+        private void ManejarError(Exception ex, string mensaje)
+        {
+            // Manejar la excepción y generar el log de error
+            MessageBox.Show($"{mensaje}\n\nDetalles del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Serializadora.GenerarLogDeError(new Serializadora.LogEntry
+            {
+                Timestamp = DateTime.Now,
+                Message = $"{mensaje}\n\nDetalles del error: {ex.Message}"
+            });
+        }
 
     }
 }

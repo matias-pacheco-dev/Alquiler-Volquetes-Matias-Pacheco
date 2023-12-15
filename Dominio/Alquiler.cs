@@ -1,5 +1,6 @@
 ﻿namespace Dominio
 {
+    [Serializable]
     public enum MedioDePago
     {
         Efectivo,
@@ -15,7 +16,7 @@
         Cancelado,
     }
 
-    [Serializable]
+    
     public class Alquiler
     {
         public List<Volquete> VolquetesAlquiler { get; set; }

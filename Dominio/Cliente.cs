@@ -24,15 +24,5 @@
             alquileres.Add(alquiler);
         }
 
-        public override string ToString()
-        {
-            return $"{this.id} -- {this.contraseña} -- {this.alquileres}";
-        }
-
-
-
-
-
-
     }
 }

@@ -38,40 +38,53 @@ namespace Parcial_Volquete
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            UserDao userDao = new UserDao();
-            Usuario usuario = userDao.Login(txtUser.Text, txtPassword.Text);
-
-            if (usuario != null)
+            try
             {
-                if (usuario is Cliente)
-                {
-                    VentanaEmergente ve = new VentanaEmergente("Log In", "Cliente logueado con exito");
-                    ve.ShowDialog();
+                // Intentar realizar la conexión a la base de datos
+                UserDao userDao = new UserDao();
+                Usuario usuario = userDao.Login(txtUser.Text, txtPassword.Text);
 
-                    if (ve.DialogResult == DialogResult.OK)
+                if (usuario != null)
+                {
+                    if (usuario is Cliente)
                     {
-                        GestionUsuarios.IniciarSesion((Cliente)usuario);
-                        Menu mp = new Menu();
-                        mp.Show();
-                        this.Hide();
+                        VentanaEmergente ve = new VentanaEmergente("Log In", "Cliente logueado con éxito");
+                        ve.ShowDialog();
+
+                        if (ve.DialogResult == DialogResult.OK)
+                        {
+                            GestionUsuarios.IniciarSesion((Cliente)usuario);
+                            Menu mp = new Menu();
+                            mp.Show();
+                            this.Hide();
+                        }
+                    }
+                    else
+                    {
+                        VentanaEmergente ve = new VentanaEmergente("Log In", "Admin logueado con éxito");
+                        ve.ShowDialog();
+
+                        if (ve.DialogResult == DialogResult.OK)
+                        {
+                            GestionUsuarios.IniciarSesionAdmin((Administrador)usuario);
+                            Menu mp = new Menu();
+                            mp.Show();
+                            this.Hide();
+                        }
                     }
                 }
-                else
-                {
-                    VentanaEmergente ve = new VentanaEmergente("Log In", "Admin logueado con exito");
-                    ve.ShowDialog();
-
-                    if (ve.DialogResult == DialogResult.OK)
-                    {
-                        GestionUsuarios.IniciarSesionAdmin((Administrador)usuario);
-                        Menu mp = new Menu();
-                        mp.Show();
-                        this.Hide();
-                    }
-                }
-
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al intentar acceder: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                // Generar el log de error utilizando la Serializadora
+                Serializadora.GenerarLogDeError(new Serializadora.LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Message = $"Error en el login: {ex.Message}"
+                });
+            }
         }
         private void txtUser_Enter(object sender, EventArgs e)
         {

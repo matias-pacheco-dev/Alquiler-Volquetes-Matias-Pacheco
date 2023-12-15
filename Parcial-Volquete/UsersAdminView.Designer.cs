@@ -45,6 +45,7 @@
             dtgListaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgListaUsuarios.Location = new Point(336, 7);
             dtgListaUsuarios.Name = "dtgListaUsuarios";
+            dtgListaUsuarios.RowHeadersVisible = false;
             dtgListaUsuarios.RowTemplate.Height = 25;
             dtgListaUsuarios.Size = new Size(448, 174);
             dtgListaUsuarios.TabIndex = 0;
@@ -110,6 +111,7 @@
             dtgAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgAlquileres.Location = new Point(336, 188);
             dtgAlquileres.Name = "dtgAlquileres";
+            dtgAlquileres.RowHeadersVisible = false;
             dtgAlquileres.RowTemplate.Height = 25;
             dtgAlquileres.Size = new Size(448, 196);
             dtgAlquileres.TabIndex = 5;

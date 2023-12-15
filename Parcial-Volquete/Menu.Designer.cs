@@ -45,6 +45,7 @@
             logOutToolStripMenuItem = new ToolStripMenuItem();
             administradorPanelToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
+            miPerfilToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -127,7 +128,7 @@
             // 
             // cuentaToolStripMenuItem
             // 
-            cuentaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reservasToolStripMenuItem });
+            cuentaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reservasToolStripMenuItem, miPerfilToolStripMenuItem });
             cuentaToolStripMenuItem.Name = "cuentaToolStripMenuItem";
             cuentaToolStripMenuItem.Size = new Size(70, 22);
             cuentaToolStripMenuItem.Text = "Cuenta";
@@ -135,7 +136,7 @@
             // reservasToolStripMenuItem
             // 
             reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
-            reservasToolStripMenuItem.Size = new Size(142, 22);
+            reservasToolStripMenuItem.Size = new Size(180, 22);
             reservasToolStripMenuItem.Text = "Reservas";
             reservasToolStripMenuItem.Click += reservasToolStripMenuItem_Click;
             // 
@@ -163,6 +164,13 @@
             pictureBox1.Size = new Size(800, 424);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
+            // 
+            // miPerfilToolStripMenuItem
+            // 
+            miPerfilToolStripMenuItem.Name = "miPerfilToolStripMenuItem";
+            miPerfilToolStripMenuItem.Size = new Size(180, 22);
+            miPerfilToolStripMenuItem.Text = "Mi Perfil";
+            miPerfilToolStripMenuItem.Click += miPerfilToolStripMenuItem_Click;
             // 
             // Menu
             // 
@@ -207,5 +215,6 @@
         private ToolStripMenuItem corrientesToolStripMenuItem;
         private ToolStripMenuItem entreRíosToolStripMenuItem;
         private ToolStripMenuItem administradorPanelToolStripMenuItem;
+        private ToolStripMenuItem miPerfilToolStripMenuItem;
     }
 }

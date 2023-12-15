@@ -131,6 +131,9 @@ namespace Parcial_Volquete
             VistaAdmin = null;
         }
 
+        private void miPerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

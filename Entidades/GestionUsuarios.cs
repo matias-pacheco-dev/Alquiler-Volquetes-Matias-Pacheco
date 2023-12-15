@@ -40,34 +40,7 @@ namespace Entidades
 
         
 
-        #region JSON
-        public static void CargarUsuariosDesdeJSON()
-        {
-            string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "usuarios.json");
-            Usuarios = Serializadora.LeerJson(rutaArchivo);
-
-        }
-        public static void GuardarUsuariosEnJSON()
-        {
-            foreach (Cliente usuario in Usuarios)
-            {
-                if (usuario.id == UsuarioActual.id)
-                {
-                    usuario.alquileres = UsuarioActual.alquileres;
-                }
-            }
-            string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "usuarios.json");
-            Serializadora.EscribirJson(rutaArchivo, Usuarios);
-        }
-
-        public static void CargarAdminDesdeJSON()
-        {
-            string rutaArchivo = Path.Combine(@"C:\Users\Matìas\source\repos\Parcial-Volquete\Data-Base", "admins.json");
-            Admins = Serializadora.LeerJsonAdmin(rutaArchivo);
-
-        }
-        #endregion
-
+      
 
 
 

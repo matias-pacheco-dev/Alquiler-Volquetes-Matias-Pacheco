@@ -1,78 +1,74 @@
 ﻿using Newtonsoft.Json;
 using Dominio;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
 namespace Entidades
 {
     public static class Serializadora
     {
-        public static void EscribirJson(string ruta, List<Cliente> lista)
+        #region JSON
+
+        public static void GenerarLogDeError(LogEntry logEntry)
         {
             try
             {
-                string json = JsonConvert.SerializeObject(lista, Newtonsoft.Json.Formatting.Indented);
-                File.WriteAllText(ruta, json);
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string logFilePath = Path.Combine(desktopPath, "error_log.json");
+
+                string logJson = JsonConvert.SerializeObject(logEntry);
+
+                using (StreamWriter sw = File.AppendText(logFilePath))
+                {
+                    sw.WriteLine(logJson);
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        public class LogEntry
+        {
+            public DateTime Timestamp { get; set; }
+            public string Message { get; set; }
+        }
+
+        #endregion
+
+        #region XML
+        public static void GuardarAlquileresEnXML(List<Alquiler> alquileres, string fileName)
+        {
+            try
+            {
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string fullPath = Path.Combine(desktopPath, fileName);
+
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Alquiler>));
+
+                using (StreamWriter writer = new StreamWriter(fullPath))
+                {
+                    serializer.Serialize(writer, alquileres);
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                
             }
         }
 
-
-
-
-        public static List<Cliente> LeerJson(string path)
-        {
-            List<Cliente> lista = null;
-            try
-            {
-                string json = File.ReadAllText(path);
-                lista = JsonConvert.DeserializeObject<List<Cliente>>(json);
-
-            }
-            catch (Exception e)
-            {
-
-            }
-            return lista;
-        }
-
-
-
-
-        public static void ActualizarJson(string ruta, List<Cliente> lista)
-        {
-            try
-            {
-                string json = JsonConvert.SerializeObject(lista, Newtonsoft.Json.Formatting.Indented);
-
-                using (StreamWriter file = new StreamWriter(ruta, true))
-                {
-                    file.WriteLine(json);
-                }
-            }
-            catch
-            {
-
-            }
-
-        }
-
-        public static List<Administrador> LeerJsonAdmin(string path)
-        {
-            List<Administrador> lista = null;
-            try
-            {
-                string json = File.ReadAllText(path);
-                lista = JsonConvert.DeserializeObject<List<Administrador>>(json);
-
-            }
-            catch (Exception e)
-            {
-
-            }
-            return lista;
-        }
-
+        #endregion
 
     }
 }
+
+
+    
+
+
+
+
+
+
+

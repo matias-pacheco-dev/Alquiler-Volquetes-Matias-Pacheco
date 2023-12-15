@@ -63,7 +63,9 @@ namespace Parcial_Volquete
             List<int> listaIdsAlquileres = GestionUsuarios.UsuarioActual.alquileres.Select(alquiler => alquiler.IdAlquiler).ToList();
 
 
+
             comboBaja.DataSource = listaIdsAlquileres;
+
 
 
         }
@@ -86,10 +88,16 @@ namespace Parcial_Volquete
                 dtgAlquileres.DataSource = GestionUsuarios.UsuarioActual.alquileres; // Vincular el origen de datos nuevamente
                 dtgAlquileres.Refresh();
 
+
                 List<int> listaIdsAlquileres = GestionUsuarios.UsuarioActual.alquileres.Select(alquiler => alquiler.IdAlquiler).ToList();
                 comboBaja.DataSource = listaIdsAlquileres;
 
             }
+        }
+
+        private void btnGuardarXML_Click(object sender, EventArgs e)
+        {
+            Serializadora.GuardarAlquileresEnXML(GestionUsuarios.UsuarioActual.alquileres, "TusAlquileres");
         }
     }
 }

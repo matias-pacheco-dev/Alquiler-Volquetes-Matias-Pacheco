@@ -15,6 +15,7 @@
             this.TipoUsuario = tipoUsuario;
         }
 
+        
 
 
     }

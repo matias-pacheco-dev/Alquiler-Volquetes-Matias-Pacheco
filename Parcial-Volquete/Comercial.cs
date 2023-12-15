@@ -99,15 +99,32 @@ namespace Parcial_Volquete
 
         private bool VerificarStock(TipoDeVolquete tipo)
         {
-            VolqueteDao volqueteDao = new VolqueteDao();
-            Dictionary<TipoDeVolquete, int> contadores = volqueteDao.ContabilizarVolquetesPorTipoEnBD();
-
-            if (contadores.ContainsKey(tipo) && contadores[tipo] > 0)
+            try
             {
-                return true;
-            }
+                VolqueteDao volqueteDao = new VolqueteDao();
+                Dictionary<TipoDeVolquete, int> contadores = volqueteDao.ContabilizarVolquetesPorTipoEnBD();
 
-            return false;
+                if (contadores.ContainsKey(tipo) && contadores[tipo] > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch(Exception ex)
+            {
+                // Manejar la excepción
+                MessageBox.Show($"Error al intentar verificar stock: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Generar el log de error utilizando la Serializadora
+                Serializadora.GenerarLogDeError(new Serializadora.LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Message = $"Error al intentar verificar stock: {ex.Message}"
+                });
+
+                return false;
+            }
         }
        
 
