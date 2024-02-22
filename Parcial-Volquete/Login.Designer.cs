@@ -82,7 +82,6 @@
             lblLogin.Size = new Size(115, 36);
             lblLogin.TabIndex = 5;
             lblLogin.Text = "LOGIN";
-
             // 
             // txtUser
             // 

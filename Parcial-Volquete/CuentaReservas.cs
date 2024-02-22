@@ -72,27 +72,31 @@ namespace Parcial_Volquete
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
-            int idAlquiler = (int)comboBaja.SelectedValue;
-
-            // Eliminar alquiler de la base de datos
-            alquilerdao.EliminarAlquiler(idAlquiler);
-
-            // Buscar y eliminar el alquiler de GestionUsuarios.UsuarioActual.alquileres
-            Alquiler alquilerAEliminar = GestionUsuarios.UsuarioActual.alquileres.FirstOrDefault(a => a.IdAlquiler == idAlquiler);
-
-            if (alquilerAEliminar != null)
+            if (comboBaja.SelectedValue != null && (int)comboBaja.SelectedValue >= 0)
             {
-                GestionUsuarios.UsuarioActual.alquileres.Remove(alquilerAEliminar);
+                int idAlquiler = (int)comboBaja.SelectedValue;
 
-                dtgAlquileres.DataSource = null; // Desvincular el origen de datos
-                dtgAlquileres.DataSource = GestionUsuarios.UsuarioActual.alquileres; // Vincular el origen de datos nuevamente
-                dtgAlquileres.Refresh();
+                // Eliminar alquiler de la base de datos
+                alquilerdao.EliminarAlquiler(idAlquiler);
+
+                // Buscar y eliminar el alquiler de GestionUsuarios.UsuarioActual.alquileres
+                Alquiler alquilerAEliminar = GestionUsuarios.UsuarioActual.alquileres.FirstOrDefault(a => a.IdAlquiler == idAlquiler);
+
+                if (alquilerAEliminar != null)
+                {
+                    GestionUsuarios.UsuarioActual.alquileres.Remove(alquilerAEliminar);
+
+                    dtgAlquileres.DataSource = null; // Desvincular el origen de datos
+                    dtgAlquileres.DataSource = GestionUsuarios.UsuarioActual.alquileres; // Vincular el origen de datos nuevamente
+                    dtgAlquileres.Refresh();
 
 
-                List<int> listaIdsAlquileres = GestionUsuarios.UsuarioActual.alquileres.Select(alquiler => alquiler.IdAlquiler).ToList();
-                comboBaja.DataSource = listaIdsAlquileres;
+                    List<int> listaIdsAlquileres = GestionUsuarios.UsuarioActual.alquileres.Select(alquiler => alquiler.IdAlquiler).ToList();
+                    comboBaja.DataSource = listaIdsAlquileres;
 
+                }
             }
+            
         }
 
         private void btnGuardarXML_Click(object sender, EventArgs e)
