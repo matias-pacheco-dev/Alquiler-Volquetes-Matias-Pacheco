@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class SerializadorJson<T> : Serializador, ISerializable<T> where T : new()
+    public class SerializadorJson<T> : Serializador, ISerializable<T> 
     {
         public SerializadorJson(string path) : base(path)
         {
