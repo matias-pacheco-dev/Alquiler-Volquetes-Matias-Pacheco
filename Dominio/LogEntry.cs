@@ -11,6 +11,10 @@ namespace Dominio
         public DateTime Timestamp { get; set; }
         public string Message { get; set; }
 
+        public LogEntry()
+        {
+            
+        }
         public LogEntry(string message)
         {
             Timestamp = DateTime.Now;
@@ -21,3 +25,4 @@ namespace Dominio
 
     }
 }
+

@@ -221,6 +221,10 @@ namespace Parcial_Volquete
                 NuevosUsuarios = new List<Usuario>();
                 ObtenerModificaciones();
                 userdao.ModificarUsuariosEnDB(NuevosUsuarios);
+
+                VentanaEmergente ve = new VentanaEmergente("Éxito", "Cambios realizados");
+                ve.ShowDialog();
+
             }
             catch (Exception ex)
             {

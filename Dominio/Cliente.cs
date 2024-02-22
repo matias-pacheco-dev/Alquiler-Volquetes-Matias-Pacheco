@@ -5,6 +5,7 @@
     {
         public List<Alquiler> alquileres;
 
+
         public Cliente(int iddb, string id, string contraseña, int tipoUsuario) : base(iddb, id, contraseña, tipoUsuario)
         {
 
