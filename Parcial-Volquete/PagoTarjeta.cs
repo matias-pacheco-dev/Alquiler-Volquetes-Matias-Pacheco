@@ -167,5 +167,66 @@ namespace Parcial_Volquete
                 txtName.Text = "John Doe";
             }
         }
+
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+
+            // Generar un número de tarjeta de crédito aleatorio de 16 dígitos con guiones cada cuatro dígitos
+            string numTarjeta = "";
+            for (int i = 0; i < 16; i++)
+            {
+                if (i > 0 && i % 4 == 0) // Agrega un guión ("-") cada cuatro dígitos
+                {
+                    numTarjeta += "-";
+                }
+                numTarjeta += random.Next(0, 10); // Genera un número aleatorio entre 0 y 9
+            }
+            txtNumTarjeta.Text = numTarjeta;
+
+            // Generar una fecha de expiración aleatoria en el formato "MM/YY"
+            int month = random.Next(1, 13); // Genera un número aleatorio entre 1 y 12 para el mes
+            int year = random.Next(DateTime.Now.Year, DateTime.Now.Year + 6); // Genera un año aleatorio entre el actual y los próximos 5 años
+            txtExpiration.Text = $"{month.ToString("00")}/{(year % 100).ToString("00")}"; // Formatea el mes y el año en el formato deseado
+
+            // Generar un CVV aleatorio de 3 dígitos
+            string cvv = random.Next(100, 1000).ToString(); // Genera un número aleatorio entre 100 y 999
+            txtCVV.Text = cvv;
+
+            // Generar un nombre aleatorio
+            string[] nombres = { "John Doe", "Jane Smith", "Michael Johnson", "Emily Brown", "David Wilson", "Sarah Martinez" }; // Lista de nombres aleatorios
+            txtName.Text = nombres[random.Next(nombres.Length)]; // Elige un nombre aleatorio de la lista
+        }
+
+        private void txtNumTarjeta_TextChanged(object sender, EventArgs e)
+        {
+            // Eliminar los guiones actuales para poder volver a formatear el número
+            string numTarjetaSinGuiones = txtNumTarjeta.Text.Replace("-", "");
+
+            // Formatear el número de tarjeta agregando guiones cada cuatro dígitos
+            string numTarjetaFormateado = "";
+            for (int i = 0; i < numTarjetaSinGuiones.Length; i++)
+            {
+                if (i > 0 && i % 4 == 0) // Agrega un guión ("-") cada cuatro dígitos
+                {
+                    numTarjetaFormateado += "-";
+                }
+                numTarjetaFormateado += numTarjetaSinGuiones[i];
+            }
+
+            // Mostrar el número de tarjeta formateado en el campo de texto
+            txtNumTarjeta.Text = numTarjetaFormateado;
+            // Mover el cursor al final del texto para mantener la posición correcta
+            txtNumTarjeta.SelectionStart = txtNumTarjeta.Text.Length;
+        }
+
+        private void txtNumTarjeta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo la entrada de números y la tecla de retroceso (backspace)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

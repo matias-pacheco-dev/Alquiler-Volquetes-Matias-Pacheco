@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagoTarjeta));
             label1 = new Label();
             txtNumTarjeta = new TextBox();
             txtExpiration = new TextBox();
@@ -42,6 +43,7 @@
             label6 = new Label();
             lblPrecio = new Label();
             lblProgreso = new Label();
+            btnRandom = new Button();
             SuspendLayout();
             // 
             // label1
@@ -66,7 +68,9 @@
             txtNumTarjeta.Size = new Size(265, 25);
             txtNumTarjeta.TabIndex = 3;
             txtNumTarjeta.Text = "**** **** **** ****";
+            txtNumTarjeta.TextChanged += txtNumTarjeta_TextChanged;
             txtNumTarjeta.Enter += txtNumTarjeta_Enter;
+            txtNumTarjeta.KeyPress += txtNumTarjeta_KeyPress;
             txtNumTarjeta.Leave += txtNumTarjeta_Leave;
             // 
             // txtExpiration
@@ -212,11 +216,24 @@
             lblProgreso.AutoSize = true;
             lblProgreso.Font = new Font("Arial Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblProgreso.ForeColor = SystemColors.Control;
-            lblProgreso.Location = new Point(361, 273);
+            lblProgreso.Location = new Point(142, 485);
             lblProgreso.Name = "lblProgreso";
             lblProgreso.Size = new Size(113, 17);
             lblProgreso.TabIndex = 16;
             lblProgreso.Text = "Esperando pago";
+            // 
+            // btnRandom
+            // 
+            btnRandom.BackgroundImage = (Image)resources.GetObject("btnRandom.BackgroundImage");
+            btnRandom.FlatStyle = FlatStyle.Flat;
+            btnRandom.ForeColor = SystemColors.Control;
+            btnRandom.Location = new Point(379, 491);
+            btnRandom.Name = "btnRandom";
+            btnRandom.Size = new Size(134, 23);
+            btnRandom.TabIndex = 22;
+            btnRandom.Text = "Generar datos";
+            btnRandom.UseVisualStyleBackColor = true;
+            btnRandom.Click += btnRandom_Click;
             // 
             // PagoTarjeta
             // 
@@ -224,6 +241,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(21, 23, 30);
             ClientSize = new Size(525, 526);
+            Controls.Add(btnRandom);
             Controls.Add(lblProgreso);
             Controls.Add(lblPrecio);
             Controls.Add(label6);
@@ -263,5 +281,6 @@
         private Label label6;
         private Label lblPrecio;
         private Label lblProgreso;
+        private Button btnRandom;
     }
 }

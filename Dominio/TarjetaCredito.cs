@@ -10,7 +10,7 @@ namespace Dominio
     {
         public string ProcesarPago(decimal monto)
         {
-            return $"Procesando pago de {monto} mediante tarjeta de crédito.";
+            return $"Procesando pago de {monto}";
         }
 
         public void GenerarFactura(Alquiler alquiler)
@@ -46,7 +46,7 @@ namespace Dominio
 
                     // Resumen
                     sw.WriteLine($"Total: {alquiler.Precio:C}");
-                    Task.Delay(3000).Wait();
+                    Task.Delay(5000).Wait();
                 }
 
             }
