@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Dominio
 {
-    public class SerializadorXML<T>: Serializador, ISerializable<T> where T : new()
+    public class SerializadorXML<T>: Serializador, ISerializable<T> 
     {
         public SerializadorXML(string path) : base(path)
         {
