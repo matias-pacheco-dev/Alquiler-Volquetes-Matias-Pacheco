@@ -42,7 +42,7 @@
             lblNombreUsuario.AutoSize = true;
             lblNombreUsuario.BackColor = Color.DarkOrange;
             lblNombreUsuario.Font = new Font("Arial Black", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombreUsuario.Location = new Point(91, 18);
+            lblNombreUsuario.Location = new Point(26, 16);
             lblNombreUsuario.Name = "lblNombreUsuario";
             lblNombreUsuario.Size = new Size(74, 22);
             lblNombreUsuario.TabIndex = 0;
@@ -53,11 +53,11 @@
             lblTo.AutoSize = true;
             lblTo.BackColor = Color.DarkOrange;
             lblTo.Font = new Font("Arial Black", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTo.Location = new Point(189, 18);
+            lblTo.Location = new Point(160, 15);
             lblTo.Name = "lblTo";
-            lblTo.Size = new Size(30, 22);
+            lblTo.Size = new Size(48, 22);
             lblTo.TabIndex = 1;
-            lblTo.Text = "To";
+            lblTo.Text = "Para";
             // 
             // richTextBox
             // 
@@ -98,7 +98,7 @@
             // comboBox
             // 
             comboBox.FormattingEnabled = true;
-            comboBox.Location = new Point(242, 18);
+            comboBox.Location = new Point(250, 15);
             comboBox.Name = "comboBox";
             comboBox.Size = new Size(121, 23);
             comboBox.TabIndex = 8;

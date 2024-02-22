@@ -50,6 +50,7 @@
             txtTelefono = new TextBox();
             txtDireccion = new TextBox();
             btnExit = new Button();
+            btnRandom = new Button();
             SuspendLayout();
             // 
             // lblInfo
@@ -84,7 +85,7 @@
             label1.BorderStyle = BorderStyle.Fixed3D;
             label1.Location = new Point(128, 131);
             label1.Name = "label1";
-            label1.Size = new Size(200, 2);
+            label1.Size = new Size(253, 2);
             label1.TabIndex = 2;
             // 
             // label2
@@ -93,7 +94,7 @@
             label2.BorderStyle = BorderStyle.Fixed3D;
             label2.Location = new Point(128, 177);
             label2.Name = "label2";
-            label2.Size = new Size(200, 2);
+            label2.Size = new Size(253, 2);
             label2.TabIndex = 3;
             // 
             // lblEmail
@@ -128,7 +129,7 @@
             label3.BorderStyle = BorderStyle.Fixed3D;
             label3.Location = new Point(128, 230);
             label3.Name = "label3";
-            label3.Size = new Size(200, 2);
+            label3.Size = new Size(253, 2);
             label3.TabIndex = 6;
             // 
             // lblDireccion
@@ -150,7 +151,7 @@
             label4.BorderStyle = BorderStyle.Fixed3D;
             label4.Location = new Point(128, 281);
             label4.Name = "label4";
-            label4.Size = new Size(200, 2);
+            label4.Size = new Size(253, 2);
             label4.TabIndex = 8;
             // 
             // lblFecha
@@ -175,7 +176,7 @@
             dateTimePicker1.Location = new Point(128, 315);
             dateTimePicker1.MinDate = new DateTime(2023, 10, 19, 0, 0, 0, 0);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(208, 21);
+            dateTimePicker1.Size = new Size(253, 21);
             dateTimePicker1.TabIndex = 10;
             // 
             // label5
@@ -236,7 +237,7 @@
             btnConfirmar.FlatStyle = FlatStyle.Flat;
             btnConfirmar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnConfirmar.ForeColor = Color.White;
-            btnConfirmar.Location = new Point(128, 474);
+            btnConfirmar.Location = new Point(157, 474);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(179, 28);
             btnConfirmar.TabIndex = 15;
@@ -252,7 +253,7 @@
             txtNombre.ForeColor = Color.White;
             txtNombre.Location = new Point(128, 110);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(200, 22);
+            txtNombre.Size = new Size(253, 22);
             txtNombre.TabIndex = 16;
             // 
             // txtEmail
@@ -263,7 +264,7 @@
             txtEmail.ForeColor = Color.White;
             txtEmail.Location = new Point(128, 155);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(200, 22);
+            txtEmail.Size = new Size(253, 22);
             txtEmail.TabIndex = 17;
             // 
             // txtTelefono
@@ -274,7 +275,7 @@
             txtTelefono.ForeColor = Color.White;
             txtTelefono.Location = new Point(128, 208);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(200, 22);
+            txtTelefono.Size = new Size(253, 22);
             txtTelefono.TabIndex = 18;
             // 
             // txtDireccion
@@ -285,7 +286,7 @@
             txtDireccion.ForeColor = Color.White;
             txtDireccion.Location = new Point(128, 259);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(200, 22);
+            txtDireccion.Size = new Size(253, 22);
             txtDireccion.TabIndex = 19;
             // 
             // btnExit
@@ -293,12 +294,25 @@
             btnExit.BackgroundImage = (Image)resources.GetObject("btnExit.BackgroundImage");
             btnExit.BackgroundImageLayout = ImageLayout.Stretch;
             btnExit.FlatStyle = FlatStyle.Flat;
-            btnExit.Location = new Point(12, 12);
+            btnExit.Location = new Point(483, 12);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(31, 29);
+            btnExit.Size = new Size(37, 29);
             btnExit.TabIndex = 20;
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
+            // 
+            // btnRandom
+            // 
+            btnRandom.BackgroundImage = (Image)resources.GetObject("btnRandom.BackgroundImage");
+            btnRandom.FlatStyle = FlatStyle.Flat;
+            btnRandom.ForeColor = SystemColors.Control;
+            btnRandom.Location = new Point(371, 479);
+            btnRandom.Name = "btnRandom";
+            btnRandom.Size = new Size(134, 23);
+            btnRandom.TabIndex = 21;
+            btnRandom.Text = "Generar datos";
+            btnRandom.UseVisualStyleBackColor = true;
+            btnRandom.Click += btnRandom_Click;
             // 
             // Reserva
             // 
@@ -307,6 +321,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(532, 514);
+            Controls.Add(btnRandom);
             Controls.Add(btnExit);
             Controls.Add(txtDireccion);
             Controls.Add(txtTelefono);
@@ -362,5 +377,6 @@
         private TextBox txtTelefono;
         private TextBox txtDireccion;
         private Button btnExit;
+        private Button btnRandom;
     }
 }

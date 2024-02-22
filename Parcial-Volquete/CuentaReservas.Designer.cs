@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cuenta_Reservas));
             dtgAlquileres = new DataGridView();
             lblNombreCuenta = new Label();
@@ -36,15 +36,15 @@
             btnBaja = new Button();
             btnGuardarXML = new Button();
             comboBaja = new ComboBox();
-            btnEditar = new Button();
+            btnSoporte = new Button();
             btnGuardarJson = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgAlquileres).BeginInit();
             SuspendLayout();
             // 
             // dtgAlquileres
             // 
-            dataGridViewCellStyle1.BackColor = Color.DarkOrange;
-            dtgAlquileres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = Color.DarkOrange;
+            dtgAlquileres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             dtgAlquileres.BackgroundColor = Color.MediumPurple;
             dtgAlquileres.BorderStyle = BorderStyle.None;
             dtgAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -120,20 +120,20 @@
             comboBaja.Size = new Size(121, 23);
             comboBaja.TabIndex = 5;
             // 
-            // btnEditar
+            // btnSoporte
             // 
-            btnEditar.BackgroundImage = (Image)resources.GetObject("btnEditar.BackgroundImage");
-            btnEditar.BackgroundImageLayout = ImageLayout.Stretch;
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditar.ForeColor = SystemColors.Control;
-            btnEditar.Location = new Point(149, 309);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(200, 28);
-            btnEditar.TabIndex = 6;
-            btnEditar.Text = "Modificar alquiler";
-            btnEditar.UseVisualStyleBackColor = true;
-            btnEditar.Click += btnEditar_Click;
+            btnSoporte.BackgroundImage = (Image)resources.GetObject("btnSoporte.BackgroundImage");
+            btnSoporte.BackgroundImageLayout = ImageLayout.Stretch;
+            btnSoporte.FlatStyle = FlatStyle.Flat;
+            btnSoporte.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSoporte.ForeColor = SystemColors.Control;
+            btnSoporte.Location = new Point(149, 309);
+            btnSoporte.Name = "btnSoporte";
+            btnSoporte.Size = new Size(200, 28);
+            btnSoporte.TabIndex = 6;
+            btnSoporte.Text = "Asistencia";
+            btnSoporte.UseVisualStyleBackColor = true;
+            btnSoporte.Click += btnEditar_Click;
             // 
             // btnGuardarJson
             // 
@@ -159,7 +159,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(796, 396);
             Controls.Add(btnGuardarJson);
-            Controls.Add(btnEditar);
+            Controls.Add(btnSoporte);
             Controls.Add(comboBaja);
             Controls.Add(btnGuardarXML);
             Controls.Add(btnBaja);
@@ -185,7 +185,7 @@
         private Button btnBaja;
         private Button btnGuardarXML;
         private ComboBox comboBaja;
-        private Button btnEditar;
+        private Button btnSoporte;
         private Button btnGuardarJson;
     }
 }

@@ -232,5 +232,40 @@ namespace Parcial_Volquete
             serializarXML.Serializar(logError);
         }
 
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            // Generar valores aleatorios para cada casilla de opciones
+            Random rnd = new Random();
+
+            // Generar valores aleatorios para la dirección
+            string[] direccionesAleatorias = { "Calle A", "Calle B", "Calle C", "Calle D", "Calle E" };
+            string direccionAleatoria = direccionesAleatorias[rnd.Next(direccionesAleatorias.Length)];
+            txtDireccion.Text = direccionAleatoria;
+
+            // Generar valores aleatorios para el nombre
+            string[] nombresAleatorios = { "Juan", "María", "Pedro", "Ana", "Luis" };
+            string nombreAleatorio = nombresAleatorios[rnd.Next(nombresAleatorios.Length)];
+            txtNombre.Text = nombreAleatorio;
+
+            // Generar valores aleatorios para el email
+            string[] emailsAleatorios = { "usuario1@example.com", "usuario2@example.com", "usuario3@example.com" };
+            string emailAleatorio = emailsAleatorios[rnd.Next(emailsAleatorios.Length)];
+            txtEmail.Text = emailAleatorio;
+
+            // Generar valores aleatorios para el teléfono
+            string[] telefonosAleatorios = { "+42 (679) 221-9190", "+91 (621) 665-8685", "+71 (958) 522-7267" };
+            string telefonoAleatorio = telefonosAleatorios[rnd.Next(telefonosAleatorios.Length)];
+            txtTelefono.Text = telefonoAleatorio;
+
+            // Generar valores aleatorios para el medio de pago
+            MedioDePago[] mediosDePagoAleatorios = { MedioDePago.Efectivo, MedioDePago.TarjetaDeCredito, MedioDePago.Transferencia };
+            MedioDePago medioDePagoAleatorio = mediosDePagoAleatorios[rnd.Next(mediosDePagoAleatorios.Length)];
+            comboBoxPago.SelectedItem = medioDePagoAleatorio;
+
+            // Generar valores aleatorios para el plazo
+            string[] plazosAleatorios = { "24hs", "48hs", "72hs", "1 semana", "2 semanas", "1 mes" };
+            string plazoAleatorio = plazosAleatorios[rnd.Next(plazosAleatorios.Length)];
+            comboBoxPlazo.SelectedItem = plazoAleatorio;
+        }
     }
 }
