@@ -17,6 +17,10 @@
         public TipoDeVolquete Tipo { get; set; }
 
 
+        public Volquete()
+        {
+            
+        }
 
         public Volquete(int id, int idalquiler, double tamaño, TipoDeVolquete tipo)
         {

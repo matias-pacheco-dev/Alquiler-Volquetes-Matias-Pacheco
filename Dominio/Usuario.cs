@@ -15,7 +15,8 @@
             this.TipoUsuario = tipoUsuario;
         }
 
-        
+        public abstract string ObtenerTipo();
+
 
 
     }

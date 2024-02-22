@@ -5,7 +5,7 @@ namespace AccesoDatos
 {
     public class UserDao : BaseDao<Usuario>
     {
-        public Usuario Login(string user, string pass)
+        public virtual Usuario Login(string user, string pass)
         {
             string query = "SELECT * FROM usuarios WHERE Nombre=@user and Contraseña=@pass";
             var parameters = new Dictionary<string, object>
@@ -17,7 +17,7 @@ namespace AccesoDatos
             return ExecuteQuery(query, parameters, MapUsuario).FirstOrDefault();
         }
 
-        public List<Usuario> ObtenerTodosLosUsuarios()
+        public virtual List<Usuario> ObtenerTodosLosUsuarios()
         {
             string query = "SELECT * FROM usuarios";
             return ExecuteQuery(query, mapFunction: MapUsuario);
@@ -69,7 +69,7 @@ namespace AccesoDatos
 
             return null;
         }
-        public List<Usuario> ObtenerAdministradores()
+        public virtual List<Usuario> ObtenerAdministradores()
         {
             string query = "SELECT * FROM usuarios WHERE TipoUsuario = 2";
             return ExecuteQuery(query, mapFunction: MapUsuario);

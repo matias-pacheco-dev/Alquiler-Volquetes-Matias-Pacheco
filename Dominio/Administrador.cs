@@ -6,8 +6,11 @@
         {
 
         }
-        
-        
+
+        public override string ObtenerTipo()
+        {
+            return "Administrador";
+        }
 
 
     }

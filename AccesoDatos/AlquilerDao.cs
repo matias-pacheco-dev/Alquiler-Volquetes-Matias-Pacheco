@@ -11,10 +11,6 @@ namespace AccesoDatos
             string query = "SELECT * FROM alquiler";
             return ExecuteQuery(query, mapFunction: MapAlquiler);
         }
-
-
-
-
         public List<Alquiler> ObtenerAlquileresSegunId(int id)
         {
             List<Alquiler> alquileres = new List<Alquiler>();
@@ -115,9 +111,6 @@ namespace AccesoDatos
                     command.Parameters.AddWithValue("@precio", alquiler.Precio);
 
                     command.ExecuteNonQuery();
-
-
-
                 }
             }
         }

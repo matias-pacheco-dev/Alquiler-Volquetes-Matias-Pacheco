@@ -37,6 +37,7 @@
             btnGuardarXML = new Button();
             comboBaja = new ComboBox();
             btnEditar = new Button();
+            btnGuardarJson = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgAlquileres).BeginInit();
             SuspendLayout();
             // 
@@ -103,11 +104,11 @@
             btnGuardarXML.FlatStyle = FlatStyle.Flat;
             btnGuardarXML.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnGuardarXML.ForeColor = SystemColors.Control;
-            btnGuardarXML.Location = new Point(149, 197);
+            btnGuardarXML.Location = new Point(149, 168);
             btnGuardarXML.Name = "btnGuardarXML";
             btnGuardarXML.Size = new Size(200, 28);
             btnGuardarXML.TabIndex = 4;
-            btnGuardarXML.Text = "Guardar en XML";
+            btnGuardarXML.Text = "Guardar Alquileres en XML";
             btnGuardarXML.UseVisualStyleBackColor = true;
             btnGuardarXML.Click += btnGuardarXML_Click;
             // 
@@ -126,13 +127,28 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEditar.ForeColor = SystemColors.Control;
-            btnEditar.Location = new Point(149, 281);
+            btnEditar.Location = new Point(149, 309);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(200, 28);
             btnEditar.TabIndex = 6;
             btnEditar.Text = "Modificar alquiler";
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
+            // 
+            // btnGuardarJson
+            // 
+            btnGuardarJson.BackgroundImage = (Image)resources.GetObject("btnGuardarJson.BackgroundImage");
+            btnGuardarJson.BackgroundImageLayout = ImageLayout.Stretch;
+            btnGuardarJson.FlatStyle = FlatStyle.Flat;
+            btnGuardarJson.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardarJson.ForeColor = SystemColors.Control;
+            btnGuardarJson.Location = new Point(149, 240);
+            btnGuardarJson.Name = "btnGuardarJson";
+            btnGuardarJson.Size = new Size(200, 28);
+            btnGuardarJson.TabIndex = 7;
+            btnGuardarJson.Text = "Guardar Alquileres en JSON";
+            btnGuardarJson.UseVisualStyleBackColor = true;
+            btnGuardarJson.Click += btnGuardarJson_Click;
             // 
             // Cuenta_Reservas
             // 
@@ -142,6 +158,7 @@
             BackColor = SystemColors.ActiveCaptionText;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(796, 396);
+            Controls.Add(btnGuardarJson);
             Controls.Add(btnEditar);
             Controls.Add(comboBaja);
             Controls.Add(btnGuardarXML);
@@ -169,5 +186,6 @@
         private Button btnGuardarXML;
         private ComboBox comboBaja;
         private Button btnEditar;
+        private Button btnGuardarJson;
     }
 }

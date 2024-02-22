@@ -1,4 +1,4 @@
-using AccesoDatos;
+  using AccesoDatos;
 using Entidades;
 using System.Runtime.InteropServices;
 using Dominio;
@@ -63,11 +63,16 @@ namespace Parcial_Volquete
                 MessageBox.Show($"Error al intentar acceder: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // Generar el log de error utilizando la Serializadora
-                Serializadora.GenerarLogDeError(new Serializadora.LogEntry
-                {
-                    Timestamp = DateTime.Now,
-                    Message = $"Error en el login: {ex.Message}"
-                });
+
+                LogEntry logError = new LogEntry(ex.Message);
+
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string logFilePath = Path.Combine(desktopPath, "error_log.xml");
+
+                var serializarXML = new SerializadorXML<LogEntry>(logFilePath);
+
+                serializarXML.Serializar(logError);
+
             }
         }
         private void txtUser_Enter(object sender, EventArgs e)

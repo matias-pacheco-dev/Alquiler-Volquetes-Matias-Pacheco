@@ -97,7 +97,34 @@ namespace Parcial_Volquete
 
         private void btnGuardarXML_Click(object sender, EventArgs e)
         {
-            Serializadora.GuardarAlquileresEnXML(GestionUsuarios.UsuarioActual.alquileres, "TusAlquileres");
+
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string logFilePath = Path.Combine(desktopPath, "Tus Alquileres.XML");
+
+
+            var serializador = new SerializadorXML<List<Alquiler>>(logFilePath);
+
+
+            var alquileres = GestionUsuarios.UsuarioActual.alquileres;
+
+
+            serializador.Serializar(alquileres);
+
+        }
+
+        private void btnGuardarJson_Click(object sender, EventArgs e)
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string logFilePath = Path.Combine(desktopPath, "Tus Alquileres.json");
+
+
+            var serializador = new SerializadorJson<List<Alquiler>>(logFilePath);
+
+
+            var alquileres = GestionUsuarios.UsuarioActual.alquileres;
+
+
+            serializador.Serializar(alquileres);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -105,5 +132,7 @@ namespace Parcial_Volquete
             EnviarMensaje veEnviarMensaje = new EnviarMensaje();
             veEnviarMensaje.ShowDialog();
         }
+
+        
     }
 }

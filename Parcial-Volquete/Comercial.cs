@@ -113,15 +113,15 @@ namespace Parcial_Volquete
             }
             catch(Exception ex)
             {
-                // Manejar la excepción
-                MessageBox.Show($"Error al intentar verificar stock: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                // Generar el log de error utilizando la Serializadora
-                Serializadora.GenerarLogDeError(new Serializadora.LogEntry
-                {
-                    Timestamp = DateTime.Now,
-                    Message = $"Error al intentar verificar stock: {ex.Message}"
-                });
+                LogEntry logError = new LogEntry(ex.Message);
+
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string logFilePath = Path.Combine(desktopPath, "error_log.xml");
+
+                var serializarXML = new SerializadorXML<LogEntry>(logFilePath);
+
+                serializarXML.Serializar(logError);
 
                 return false;
             }

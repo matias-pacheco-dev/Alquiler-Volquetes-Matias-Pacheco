@@ -92,11 +92,15 @@ namespace Parcial_Volquete
         {
             // Manejar la excepción y generar el log de error
             MessageBox.Show($"{mensaje}\n\nDetalles del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Serializadora.GenerarLogDeError(new Serializadora.LogEntry
-            {
-                Timestamp = DateTime.Now,
-                Message = $"{mensaje}\n\nDetalles del error: {ex.Message}"
-            });
+
+            LogEntry logError = new LogEntry(ex.Message);
+
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string logFilePath = Path.Combine(desktopPath, "error_log.xml");
+
+            var serializarXML = new SerializadorXML<LogEntry>(logFilePath);
+
+            serializarXML.Serializar(logError);
         }
 
         private void txtNumTarjeta_Enter(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace AccesoDatos
             // Mantén la lógica original para obtener la conexión
             return new MySqlConnection(@"Server=localhost;Database=usuarios-volquete;Uid=root;Pwd=;");
         }
-        protected List<T> ExecuteQuery(string query, Dictionary<string, object> parameters = null, Func<MySqlDataReader, T> mapFunction = null)
+        public List<T> ExecuteQuery(string query, Dictionary<string, object> parameters = null, Func<MySqlDataReader, T> mapFunction = null)
         {
             List<T> results = new List<T>();
 
@@ -78,7 +78,7 @@ namespace AccesoDatos
                 }
             }
         }
-        protected void ExecuteReader(string query, Dictionary<string, object> parameters, Action<MySqlDataReader> action)
+        public void ExecuteReader(string query, Dictionary<string, object> parameters, Action<MySqlDataReader> action)
         {
             using (var connection = GetConnection())
             {

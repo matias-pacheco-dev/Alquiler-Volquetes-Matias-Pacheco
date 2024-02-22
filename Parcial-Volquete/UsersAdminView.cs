@@ -57,11 +57,14 @@ namespace Parcial_Volquete
                 MessageBox.Show($"Error al intentar cargar usuarios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // Generar el log de error utilizando la Serializadora
-                Serializadora.GenerarLogDeError(new Serializadora.LogEntry
-                {
-                    Timestamp = DateTime.Now,
-                    Message = $"Error al intentar cargar usuarios: {ex.Message}"
-                });
+                LogEntry logError = new LogEntry(ex.Message);
+
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string logFilePath = Path.Combine(desktopPath, "error_log.xml");
+
+                var serializarXML = new SerializadorXML<LogEntry>(logFilePath);
+
+                serializarXML.Serializar(logError);
             }
 
             #region Iniciar dtgAlquileres
@@ -106,11 +109,14 @@ namespace Parcial_Volquete
                 MessageBox.Show($"Error al intentar cargar alquileres: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // Generar el log de error utilizando la Serializadora
-                Serializadora.GenerarLogDeError(new Serializadora.LogEntry
-                {
-                    Timestamp = DateTime.Now,
-                    Message = $"Error al intentar cargar alquileres: {ex.Message}"
-                });
+                LogEntry logError = new LogEntry(ex.Message);
+
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string logFilePath = Path.Combine(desktopPath, "error_log.xml");
+
+                var serializarXML = new SerializadorXML<LogEntry>(logFilePath);
+
+                serializarXML.Serializar(logError);
             }
 
 
@@ -196,11 +202,14 @@ namespace Parcial_Volquete
                 MessageBox.Show($"Error al intentar obtener modificaciones: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // Generar el log de error utilizando la Serializadora
-                Serializadora.GenerarLogDeError(new Serializadora.LogEntry
-                {
-                    Timestamp = DateTime.Now,
-                    Message = $"Error al intentar obtener modificaciones: {ex.Message}"
-                });
+                LogEntry logError = new LogEntry(ex.Message);
+
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string logFilePath = Path.Combine(desktopPath, "error_log.xml");
+
+                var serializarXML = new SerializadorXML<LogEntry>(logFilePath);
+
+                serializarXML.Serializar(logError);
             }
         }
 
@@ -219,11 +228,14 @@ namespace Parcial_Volquete
                 MessageBox.Show($"Error al intentar guardar cambios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // Generar el log de error utilizando la Serializadora
-                Serializadora.GenerarLogDeError(new Serializadora.LogEntry
-                {
-                    Timestamp = DateTime.Now,
-                    Message = $"Error al intentar guardar cambios: {ex.Message}"
-                });
+                LogEntry logError = new LogEntry(ex.Message);
+
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string logFilePath = Path.Combine(desktopPath, "error_log.xml");
+
+                var serializarXML = new SerializadorXML<LogEntry>(logFilePath);
+
+                serializarXML.Serializar(logError);
             }
         }
 

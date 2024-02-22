@@ -24,5 +24,10 @@
             alquileres.Add(alquiler);
         }
 
+        public override string ObtenerTipo()
+        {
+            return "Cliente";  
+        }
+
     }
 }

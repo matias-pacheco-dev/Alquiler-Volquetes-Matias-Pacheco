@@ -33,6 +33,11 @@
 
         public int IdAlquiler { get; set; }
 
+
+        public Alquiler()
+        {
+            
+        }
         public Alquiler(List<Volquete> volquetes, DateTime dateTime, string ubicacionDeEntrega, string nombre, string email,
             string numeroDeTelefono, string duracion, decimal Precio, MedioDePago medioDePago, int IdAlquiler)
         {
